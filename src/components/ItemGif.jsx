@@ -1,7 +1,7 @@
 import { Image, StyleSheet, Text, View, Pressable, Button } from "react-native"
 
 
-export const ItemGif = ({ key, url, title, category, deleteCategory }) => {
+export const ItemGif = ({ key, url, title}) => {
     return (
         <>
             
