@@ -1,28 +1,11 @@
-import { useState } from "react"
-import { TextInput, View, TouchableOpacity, Text, Modal, StyleSheet } from "react-native"
+import { TextInput, View, TouchableOpacity, Text,  StyleSheet } from "react-native"
+import { useInput } from "../hooks"
 import { InputError } from "./InputError"
 
 export const AddGif = ({onAddCategory}) => {
-    const [inputValue, setInputValue] = useState('')
-    const [modalVisible, setModalVisible] = useState(false)
+    const {inputValue, onChange, onSubmit,handleModal,modalVisible} = useInput({onAddCategory})
 
-    const onChange = (text) =>{
-        setInputValue(text);
-    }
     
-    const onSubmit = () =>{
-        const newCategory = inputValue.trim();
-        if(newCategory.length <= 1) return setModalVisible(true);
-        console.log(newCategory);
-        onAddCategory(newCategory);
-        setInputValue('');
-    }    
-
-    const handleModal = () =>{
-        setModalVisible(!modalVisible)
-    }
-
-
 
     return (
     <View style={styles.inputContainer}>

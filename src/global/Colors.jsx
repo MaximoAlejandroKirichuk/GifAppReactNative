@@ -1,6 +1,6 @@
 
 
 export const Color = {
-    base: 'red',
+    base: '#ffddde',
     primary: 'blue',
 } 

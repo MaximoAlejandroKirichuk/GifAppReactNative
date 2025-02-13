@@ -1,8 +1,6 @@
-import { FlatList, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text} from 'react-native';
 import { AddGif } from '../components/AddGif';
 import { useState } from 'react';
-import { GifGrid } from '../components/GifGrid';
-import { Color } from '../global/Colors';
 import { Category } from '../components/Category';
 
 export const Home = () =>{
@@ -12,6 +10,7 @@ export const Home = () =>{
         if(categories.includes(category => newCategory === category)) return;
         setCategories([ { name: newCategory },...categories])
       }
+
     return (
         <> 
             <Text style={styles.title}>Gif App</Text>
@@ -30,7 +29,7 @@ export const Home = () =>{
 }
 
 const styles = StyleSheet.create({
-
+    
       title: {
         fontSize: 25,
         fontWeight: "bold",

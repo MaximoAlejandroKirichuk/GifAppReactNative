@@ -6,20 +6,21 @@ import { Color } from './src/global/Colors.jsx';
 export default function App() {
 
   return (
-      <View style={styles.container}>
+     <View style={styles.container}>
         <Home />
-      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container:{
-      alignItems: "center",
-      backgroundColor: Color.base,
-      flex: 1,
-      justifyContent: "center",
-      marginVertical:70,
-    },
+    alignItems: "center",
+    backgroundColor: Color.base,
+    flex: 1,
+    justifyContent: "center",
+    marginVertical:70,
+  },
+
   
 })
 
