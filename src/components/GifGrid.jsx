@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { View,Text, StyleSheet } from 'react-native'
+import { View,Text, StyleSheet, Pressable } from 'react-native'
 import { getGifs } from '../helpers/getGifs'
 import { ItemGif } from './ItemGif'
 
@@ -25,7 +25,16 @@ export const GifGrid = ({category}) => {
         {
             isLoading && <Text>Loading...</Text> 
         }
-        <Text style={styles.title}>{category}</Text>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{category}</Text>
+          <Pressable 
+            style = {styles.button} 
+            onPress={getImages}
+            >
+            af
+            </Pressable>
+        </View>
+
         {
             images.map(img => (
               <ItemGif
@@ -40,10 +49,21 @@ export const GifGrid = ({category}) => {
 }
 
 const styles = StyleSheet.create({
+  titleContainer:{
+    flexDirection: "row",
+    justifyContent: "space-between",
+
+  },
   title: {
     fontSize:35,
     fontWeight: "bold",
     marginVertical: 10,
   },
+
+  button:{
+    backgroundColor: "blue",
+    borderRadius: 10,
+    padding: 10,
+  }
 
 })

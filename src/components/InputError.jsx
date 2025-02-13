@@ -5,10 +5,10 @@ export const InputError = ({handleModal, modalVisible}) => {
     return (
         <Modal visible={modalVisible} animationType='slide' transparent={true}>
             <View style={styles.modalContainer}>
-                <View style={styles.textContainer}>
+                <View >
                     <Text style={styles.textModal}>Error</Text>
                 </View>
-                <View style={styles.textContainer}>
+                <View >
                     <Text style={styles.textModal} >You cannot search for a category if it has less than 2 characters</Text>
                 </View>
                 <View>
