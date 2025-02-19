@@ -16,8 +16,6 @@ export const GifGrid = ({ category }) => {
         isLoading && <Text style={styles.loadingText}>Loading...</Text>
       }
 
-     
-
       {
         (images.length !== 0) 
         ? <CategoryTitle category={category} deleteCategory={deleteCategory}/>  

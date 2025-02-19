@@ -1,14 +1,15 @@
 
-import { StyleSheet, View } from 'react-native';
+import { Platform, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import { Home } from './src/screen/Home.jsx';
 import { Color } from './src/global/Colors.jsx';
+
 
 export default function App() {
 
   return (
-     <View style={styles.container}>
+     <SafeAreaView style={styles.container}>
         <Home />
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     backgroundColor: Color.base,
     flex: 1,
     justifyContent: "center",
-    marginVertical:70,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 //si es android lo que hace es darle  un padding
   },
 
   
