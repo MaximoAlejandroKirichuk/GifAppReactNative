@@ -14,7 +14,6 @@ export const useInput = ({onAddCategory}) => {
     const onSubmit = () =>{
         const newCategory = inputValue.trim();
         if(newCategory.length <= 1) return setModalVisible(true);
-        console.log(newCategory);
         onAddCategory(newCategory);
         setInputValue('');
     }   

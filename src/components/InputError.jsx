@@ -1,27 +1,31 @@
-import { Modal, Text ,StyleSheet, View, Button } from "react-native"
-export const InputError = ({handleModal, modalVisible}) => {
+import { Modal, Text, StyleSheet, View, TouchableOpacity } from "react-native"
+import { Color } from "../global/Colors"
+import AntDesign from '@expo/vector-icons/AntDesign';
+export const InputError = ({ handleModal, modalVisible }) => {
 
     return (
         <Modal visible={modalVisible} animationType='slide' transparent={true}>
             <View style={styles.modalContainer}>
                 <View >
-                    <Text style={styles.textModal}>Error</Text>
-                </View>
-                <View >
+                    <Text style={styles.titleModal}>Error</Text>
                     <Text style={styles.textModal} >You cannot search for a category if it has less than 2 characters</Text>
                 </View>
-                <View>
-                    <Button style={styles.btnExit} onPress={handleModal} title="Exit"></Button>
-                </View>
+                <TouchableOpacity
+                    style={styles.btnContainer}
+                    onPress={handleModal}
+
+                >
+                    <AntDesign name="back" size={24} color="black" />
+                </TouchableOpacity>
             </View>
         </Modal>
-    
-  )
+
+    )
 }
 
 const styles = StyleSheet.create({
     modalContainer: {
-        backgroundColor: "white",
+        backgroundColor: 'pink',
         width: "80%",
         marginHorizontal: "10%",
         marginTop: "50%",
@@ -30,23 +34,21 @@ const styles = StyleSheet.create({
         alignContent: "center",
         gap: 20,
         paddingVertical: 20,
-        borderRadius: 8,
-        borderColor: "black",
+        borderRadius: 24,
+        borderColor: Color.buttons,
         borderWidth: 1,
-        },  
+    },
     btnContainer: {
         flexDirection: "row",
-        gap: 20,
-        color: "white",
-        },
-    btnExit:{
-        fontSize: 40,
-        backgroundColor: "black",
-        fontWeight: "red",
-        },
-    textModal: {
-        fontWeight: "bold",
-        fontSize: 24,
-        fontStyle: "italic",
     },
+    titleModal: {
+        textAlign: 'center',
+        fontWeight: "bold",
+        fontSize: 32,
+        fontStyle: "italic",
+        marginVertical: 8
+    },
+    textModal:{
+        fontSize: 24
+    }
 })

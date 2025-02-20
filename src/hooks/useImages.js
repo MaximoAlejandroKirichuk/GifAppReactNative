@@ -12,9 +12,8 @@ export const useImages = (category) => {
     setIsLoading(false);
   };
   const deleteCategory = (deleteCat) =>{
-   console.log(deleteCat)
     setImages(images.filter(img => img.name === deleteCat))
-    console.log(images)
+
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { StyleSheet, Button, View } from 'react-native';
+import { StyleSheet, Button, View, Platform, SafeAreaView } from 'react-native';
 import { AddGif } from '../components/AddGif';
 import { useState } from 'react';
 import { Category } from '../components/Category';
@@ -13,19 +13,15 @@ export const Home = ({ navigation }) => {
   }
 
   return (
-    <View style = {styles.container}>
+    <SafeAreaView style = {styles.container}>
       <AddGif
         onAddCategory={onAddCategory}
-      />
-      <Button
-        title='ir al search'
-        onPress={() => navigation.navigate('Search')}
       />
       <Category
         categoriesId={categories}
       />
 
-    </View>
+    </SafeAreaView>
   )
 
 }
@@ -37,7 +33,7 @@ const styles = StyleSheet.create({
       backgroundColor: Color.base,
       flex: 1,
       justifyContent: "center",
-      // paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 //si es android lo que hace es darle  un padding
+      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 //si es android lo que hace es darle  un padding
     },
   title: {
     fontSize: 25,

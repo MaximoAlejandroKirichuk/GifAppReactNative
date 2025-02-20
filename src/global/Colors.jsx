@@ -2,5 +2,8 @@
 
 export const Color = {
     base: '#ffddde',
-    primary: 'blue',
+    buttons: '#FF4F79',
+    title: '#D72658',
+    white:'#FFF8F9',
+    gray:'#2E2E2E'
 } 
