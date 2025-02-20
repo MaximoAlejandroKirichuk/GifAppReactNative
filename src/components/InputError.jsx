@@ -1,4 +1,3 @@
-
 import { Modal, Text ,StyleSheet, View, Button } from "react-native"
 export const InputError = ({handleModal, modalVisible}) => {
 
