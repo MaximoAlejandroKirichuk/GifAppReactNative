@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         backgroundColor: Color.white,
         borderRadius: 10,
+        padding:10,
         gap: 50
     },
     title: {

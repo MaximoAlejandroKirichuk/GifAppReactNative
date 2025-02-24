@@ -5,10 +5,11 @@ const HomeGrid = ({gifs}) => {
     return (
         <FlatList
             data={gifs}
+            numColumns={2}
             keyExtractor={(item) => item.name}
             renderItem={({item}) => <HomeCategory category={item.name} cant= {1} />}
         >
-            <HomeCategory />
+
         </FlatList>
     )
 }

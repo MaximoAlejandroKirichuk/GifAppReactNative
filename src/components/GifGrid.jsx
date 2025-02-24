@@ -1,9 +1,9 @@
 
 import { View, Text } from 'react-native'
-
-import { ItemGif, CategoryTitle } from './index'
 import { useImages } from '../hooks/useImages'
 import { globalStyles } from '../styles/globalStyles'
+import { ItemGif } from './ItemGif'
+import { CategoryTitle } from './CategoryTitle'
 
 
 export const GifGrid = ({ category }) => {
