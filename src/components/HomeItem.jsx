@@ -1,7 +1,7 @@
 import { Image, Text, View } from "react-native"
 import { globalStyles } from "../styles/globalStyles"
 
-export const ItemGif = ({ key, url, title }) => {
+export const HomeItem = ({ key, url, title }) => {
     return (
         <View key={key} style={globalStyles.imagesContainer}>
             <Image

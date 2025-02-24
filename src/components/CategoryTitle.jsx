@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, Button, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { Color } from '../global/Colors';
 
@@ -6,7 +6,13 @@ export const CategoryTitle = ({ category, deleteCategory }) => {
 
     return (
         <View style={styles.titleContainer}>
-            <Text style={styles.title}>{category}</Text>
+            <Text
+                style={styles.title}
+                numberOfLines={1}
+                adjustToSizeFit
+            >
+
+                {category}</Text>
             <View style={styles.iconsContainer}>
                 <TouchableOpacity
                     style={styles.button}
@@ -20,7 +26,7 @@ export const CategoryTitle = ({ category, deleteCategory }) => {
                 >
                     <AntDesign name="closecircleo" size={24} color="black" />
                 </TouchableOpacity>
-                
+
             </View>
 
         </View>
@@ -36,14 +42,14 @@ const styles = StyleSheet.create({
         gap: 50
     },
     title: {
-        fontSize: 35,
+        fontSize: 15,
         fontWeight: "bold",
         marginVertical: 10,
     },
 
-    iconsContainer:{
+    iconsContainer: {
         flexDirection: 'row',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
         gap: 16
     },
 

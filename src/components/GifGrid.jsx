@@ -1,19 +1,18 @@
 
-import { View, Text, StyleSheet, Pressable, Button } from 'react-native'
+import { View, Text } from 'react-native'
 
-import { ItemGif } from './ItemGif'
+import { ItemGif, CategoryTitle } from './index'
 import { useImages } from '../hooks/useImages'
-import { Color } from '../global/Colors'
-import {CategoryTitle} from './CategoryTitle'
+import { globalStyles } from '../styles/globalStyles'
 
 
 export const GifGrid = ({ category }) => {
-  const { images, isLoading, deleteCategory } = useImages(category);
+  const { images, isLoading, deleteCategory } = useImages(category,10);
 
   return (
     <View>
       {
-        isLoading && <Text style={styles.loadingText}>Loading...</Text>
+        isLoading && <Text style={globalStyles.loadingText}  >Loading...</Text>
       }
 
       {
@@ -33,10 +32,3 @@ export const GifGrid = ({ category }) => {
     </View>
   )
 }
-const styles = StyleSheet.create({
-
-  loadingText: {
-    fontSize: 30,
-    color: Color.primary,
-  }
-})

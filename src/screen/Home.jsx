@@ -1,45 +1,21 @@
-import { StyleSheet, Button, View, Platform, SafeAreaView } from 'react-native';
-import { AddGif } from '../components/AddGif';
-import { useState } from 'react';
-import { Category } from '../components/Category';
-import { Color } from '../global/Colors';
+import { SafeAreaView } from 'react-native'
+import {globalStyles} from '../styles/globalStyles.js'
+import HomeGrid from '../components/HomeGrid.jsx'
 
-export const Home = ({ navigation }) => {
-  const [categories, setCategories] = useState([])
 
-  const onAddCategory = (newCategory) => {
-    if (categories.includes(category => newCategory === category)) return;
-    setCategories([{ name: newCategory }, ...categories])
-  }
-
+export const Home = () => {
+  const trendingCategories = [
+    { id: '1', name: 'Animales', image: 'https://example.com/animals.jpg' },
+    { id: '2', name: 'Deportes', image: 'https://example.com/sports.jpg' },
+    { id: '3', name: 'Viajes', image: 'https://example.com/travel.jpg' },
+    { id: '4', name: 'Comida', image: 'https://example.com/food.jpg' },
+    { id: '5', name: 'Tecnología', image: 'https://example.com/technology.jpg' },
+    { id: '6', name: 'Música', image: 'https://example.com/music.jpg' },
+  ];
+  
   return (
-    <SafeAreaView style = {styles.container}>
-      <AddGif
-        onAddCategory={onAddCategory}
-      />
-      <Category
-        categoriesId={categories}
-      />
-
+    <SafeAreaView style = {globalStyles.container}>
+      <HomeGrid gifs = {trendingCategories}/>
     </SafeAreaView>
   )
-
 }
-
-const styles = StyleSheet.create({
-
-  container:{
-      alignItems: "center",
-      backgroundColor: Color.base,
-      flex: 1,
-      justifyContent: "center",
-      paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0 //si es android lo que hace es darle  un padding
-    },
-  title: {
-    fontSize: 25,
-    fontWeight: "bold",
-    marginVertical: 10,
-  },
-
-
-})
