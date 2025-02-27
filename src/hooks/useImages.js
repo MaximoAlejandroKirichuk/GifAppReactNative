@@ -13,7 +13,6 @@ export const useImages = (category,cant) => {
   };
   const deleteCategory = (deleteCat) =>{
     setImages(images.filter(img => img.name === deleteCat))
-
   };
 
   useEffect(() => {

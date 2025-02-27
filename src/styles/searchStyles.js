@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native"
 import { Color } from "../global/Colors"
 
 
-export const addGifStyles = StyleSheet.create({
+export const searchStyles = StyleSheet.create({
     inputContainer: {
         flexDirection: "row",
         alignItems: "center",
@@ -28,11 +28,37 @@ export const addGifStyles = StyleSheet.create({
         height: 40,
       },
       containerPlus: {
-        marginLeft: 10,
         backgroundColor: Color.buttons,
         borderRadius: 8,
         padding: 10,
-        justifyContent: "center",
-        alignItems: "center",
       },
+      categoryList:{
+        flex:1,
+        width: '90%',
+      },
+
+      //category title
+      titleContainer: {
+        flexDirection: "row",
+        justifyContent: 'space-around',
+        backgroundColor: Color.white,
+        borderRadius: 10,
+        padding:10,
+        gap: 56,
+    },
+    title: {
+        fontSize: 15,
+        fontWeight: "bold",
+        marginVertical: 10,
+    },
+
+    iconsContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        gap:24
+    },
+
+    button: {
+        justifyContent: 'center',
+    }
 })

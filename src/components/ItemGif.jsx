@@ -1,14 +1,14 @@
 import { Image, Text, View } from "react-native"
 import { globalStyles } from "../styles/globalStyles"
 
-export const ItemGif = ({ key, url, title }) => {
+export const ItemGif = ({ gifKey, url, title }) => {
     return (
-        <View key={key} style={globalStyles.imagesContainer}>
+        <View key={gifKey} style={globalStyles.imagesContainer}>
             <Image
                 style={globalStyles.image}
                 source={{ uri: url }}
             />
-            <Text key={key} style={globalStyles.subTitle}>{title}</Text>
+            <Text key={gifKey} style={globalStyles.subTitle}>{title}</Text>
         </View>
     )
 }

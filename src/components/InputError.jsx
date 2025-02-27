@@ -1,54 +1,45 @@
-import { Modal, Text, StyleSheet, View, TouchableOpacity } from "react-native"
-import { Color } from "../global/Colors"
+import { Modal, View, TouchableOpacity, Pressable } from "react-native"
+import * as Haptics from 'expo-haptics';
 import AntDesign from '@expo/vector-icons/AntDesign';
-export const InputError = ({ handleModal, modalVisible }) => {
+import { modalErrorStyles } from '../styles/modalErrorStyles'
+
+export const InputError = ({ handleModal, modalVisible, children }) => {
 
     return (
         <Modal visible={modalVisible} animationType='slide' transparent={true}>
-            <View style={styles.modalContainer}>
-                <View >
-                    <Text style={styles.titleModal}>Error</Text>
-                    <Text style={styles.textModal} >You cannot search for a category if it has less than 2 characters</Text>
-                </View>
-                <TouchableOpacity
-                    style={styles.btnContainer}
-                    onPress={handleModal}
 
+
+            {
+                modalVisible
+                    ? Haptics.notificationAsync(Haptics.NotificationFeedbackType.Warning)
+                    : null
+            }
+            <View style={modalErrorStyles.modalContainer}>
+                <View >
+                    {
+                        /* <Text style={modalErrorStyles.titleModal}>TITLE</Text>
+                            <Text style={modalErrorStyles.textModal}> Description </Text> 
+                        */
+                    }
+                    {children}
+                </View>
+
+                <Pressable
+                    style={({ pressed }) => ({
+                        ...modalErrorStyles.btnContainer,
+                        opacity: pressed ? 0.6 : 1
+                    })}
+                    onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Soft)
+                        handleModal()
+                    }}
                 >
                     <AntDesign name="back" size={24} color="black" />
-                </TouchableOpacity>
+                </Pressable>
             </View>
         </Modal>
 
     )
 }
 
-const styles = StyleSheet.create({
-    modalContainer: {
-        backgroundColor: 'pink',
-        width: "80%",
-        marginHorizontal: "10%",
-        marginTop: "50%",
-        alignItems: "center",
-        justifyContent: "center",
-        alignContent: "center",
-        gap: 20,
-        paddingVertical: 20,
-        borderRadius: 24,
-        borderColor: Color.buttons,
-        borderWidth: 1,
-    },
-    btnContainer: {
-        flexDirection: "row",
-    },
-    titleModal: {
-        textAlign: 'center',
-        fontWeight: "bold",
-        fontSize: 32,
-        fontStyle: "italic",
-        marginVertical: 8
-    },
-    textModal:{
-        fontSize: 24
-    }
-})
+

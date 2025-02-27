@@ -1,5 +1,10 @@
 import { useState } from 'react';
-export const useInput = ({onAddCategory}) => {
+import { useDispatch } from 'react-redux';
+import { setCategories } from '../store/slices/categoriesGif';
+
+export const useInput = () => {
+    const dispatch = useDispatch();
+    
     const [inputValue, setInputValue] = useState('')
     const [modalVisible, setModalVisible] = useState(false)
 
@@ -14,7 +19,7 @@ export const useInput = ({onAddCategory}) => {
     const onSubmit = () =>{
         const newCategory = inputValue.trim();
         if(newCategory.length <= 1) return setModalVisible(true);
-        onAddCategory(newCategory);
+        dispatch(setCategories(newCategory))
         setInputValue('');
     }   
 

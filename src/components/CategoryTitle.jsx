@@ -1,27 +1,34 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Text, View, TouchableOpacity } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { Color } from '../global/Colors';
-
+import * as Haptics from 'expo-haptics';
+import { useDispatch } from 'react-redux';
+import { setFavoritesGif } from '../store/slices/favoritesGif/favoritesGifSlices';
+import { searchStyles } from '../styles';
 export const CategoryTitle = ({ category, deleteCategory }) => {
 
+    const dispatch = useDispatch()
     return (
-        <View style={styles.titleContainer}>
+        <View style={searchStyles.titleContainer}>
             <Text
-                style={styles.title}
+                style={searchStyles.title}
                 numberOfLines={1}
                 adjustToSizeFit
             >
 
                 {category}</Text>
-            <View style={styles.iconsContainer}>
+            <View style={searchStyles.iconsContainer}>
+                
                 <TouchableOpacity
-                    style={styles.button}
-                    onPress={() => console.log('agregado a fav', category)}
+                    style={searchStyles.button}
+                    onPress={() => {
+                        Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+                        dispatch(setFavoritesGif(category))}
+                    }
                 >
                     <AntDesign name="staro" size={24} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={styles.button}
+                    style={searchStyles.button}
                     onPress={deleteCategory}
                 >
                     <AntDesign name="closecircleo" size={24} color="black" />
@@ -33,28 +40,3 @@ export const CategoryTitle = ({ category, deleteCategory }) => {
     )
 }
 
-const styles = StyleSheet.create({
-    titleContainer: {
-        flexDirection: "row",
-        justifyContent: 'space-around',
-        backgroundColor: Color.white,
-        borderRadius: 10,
-        padding:10,
-        gap: 50
-    },
-    title: {
-        fontSize: 15,
-        fontWeight: "bold",
-        marginVertical: 10,
-    },
-
-    iconsContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        gap: 16
-    },
-
-    button: {
-        justifyContent: 'center',
-    }
-})

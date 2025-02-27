@@ -7,8 +7,9 @@ const HomeCategory = ({category, cant}) => {
   return (
       <View>
         {
-        isLoading && <Text style={globalStyles.loadingText}>Loading...</Text>
-      }
+          isLoading && <Text style={globalStyles.loadingText}>Loading...</Text>
+        }
+      
         {
           images.map(img => (
             <HomeItem

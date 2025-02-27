@@ -1,4 +1,4 @@
-import { SafeAreaView } from 'react-native'
+import { SafeAreaView, Text, View } from 'react-native'
 import {globalStyles} from '../styles/globalStyles.js'
 import HomeGrid from '../components/HomeGrid.jsx'
 
@@ -13,6 +13,8 @@ export const Home = () => {
     { id: '6', name: 'Music',},
   ];
   
+//TODO: GUARDAR EN CACHE LA PETICION Y USAR UN REDUCE ASINCRONO
+
   return (
     <SafeAreaView style = {globalStyles.container}>
       <HomeGrid gifs = {trendingCategories}/>

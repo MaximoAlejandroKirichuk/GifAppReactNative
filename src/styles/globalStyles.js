@@ -5,11 +5,9 @@ export const globalStyles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Color.base,
     flex: 1,
-    justifyContent: "center",
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, //si es android lo que hace es darle  un padding
   },
   title: {
-    position: 'absolute',
     fontSize: 25,
     fontWeight: "bold",
     marginVertical: 10,
@@ -29,11 +27,13 @@ export const globalStyles = StyleSheet.create({
     margin: 10,
     width: 150,
     height: 150,
+    borderRadius: 10,
   },
   imageGif:{
     margin: 10,
-    width: 200,
+    width: 150,
     height: 200,
+    borderRadius: 10,
   },
   subTitle: {
     fontSize: 10,
