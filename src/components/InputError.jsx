@@ -1,4 +1,4 @@
-import { Modal, View, TouchableOpacity, Pressable } from "react-native"
+import { Modal, View, Pressable } from "react-native"
 import * as Haptics from 'expo-haptics';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { modalErrorStyles } from '../styles/modalErrorStyles'

@@ -1,14 +1,27 @@
-import { Image, Text, View } from "react-native"
-import { globalStyles } from "../styles/globalStyles"
+import { Image, Text, Pressable, View } from "react-native"
+import { homeStyles } from "../styles"
+import * as Haptics from 'expo-haptics';
 
-export const ItemGif = ({ gifKey, url, title }) => {
+export const ItemGif = ({ imgKey, url, title }) => {
+    
     return (
-        <View key={gifKey} style={globalStyles.imagesContainer}>
-            <Image
-                style={globalStyles.image}
-                source={{ uri: url }}
-            />
-            <Text key={gifKey} style={globalStyles.subTitle}>{title}</Text>
-        </View>
+        <>
+            <Pressable key={imgKey}
+                style={({ pressed }) => ({
+                    ...homeStyles.imageContainer,
+                    opacity: pressed ? 0.8 : 1,
+                })}
+                onPress={() => {
+                    Haptics.impactAsync()
+                }}
+            >
+                <View style={homeStyles.overlay} >
+                    <Image style={homeStyles.image} source={{ uri: url }} />
+                    <View style={homeStyles.textContainer}>
+                        <Text key={imgKey} style={homeStyles.imageText}>{title}</Text>
+                    </View>
+                </View>
+            </Pressable>
+        </>
     )
 }

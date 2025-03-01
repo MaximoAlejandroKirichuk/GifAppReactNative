@@ -1,13 +1,14 @@
 
 import { View, Text } from 'react-native'
-import { useImages } from '../hooks/useImages'
-import { globalStyles } from '../styles/globalStyles'
+import { useImages } from '../../hooks/useImages'
+import { globalStyles } from '../../styles/globalStyles'
 import { ItemGif } from './ItemGif'
-import { CategoryTitle } from './CategoryTitle'
+import { CategoryTitle } from '../CategoryTitle'
+// import { useGetGifsQuery } from '../store/apis/gifsApi'
 
 
-export const GifGrid = ({ category }) => {
-  const { images, isLoading, deleteCategory } = useImages(category,10);
+export const GifGrid = ({ category, cant }) => {
+  const { images, isLoading, deleteCategory } = useImages(category,cant);
 
   return (
     <View>

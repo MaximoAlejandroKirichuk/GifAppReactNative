@@ -1,11 +1,11 @@
 import { TextInput, View, TouchableOpacity, Text } from "react-native"
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { useInput } from "../hooks"
-import { InputError } from "./InputError"
-import { Color } from "../global/Colors";
-import { searchStyles, modalErrorStyles } from "../styles";
+import { useInput } from "../../hooks"
+import { InputError } from "../InputError"
+import { Color } from "../../global/Colors";
+import { searchStyles, modalErrorStyles } from "../../styles";
 
-export const AddGif = () => {
+export const AddCategory = () => {
 
     const { inputValue, onChange, onSubmit, handleModal, modalVisible } = useInput()
 

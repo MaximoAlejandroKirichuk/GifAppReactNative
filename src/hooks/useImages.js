@@ -1,18 +1,18 @@
-import { getGifs } from '../helpers/getGifs'
-import { useEffect, useState } from 'react'
-export const useImages = (category,cant) => {
-  
-  
+import { getGifs } from "../helpers/getGifs";
+import { useEffect, useState } from "react";
+export const useImages = (category, cant) => {
+
+
   const [images, setImages] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  
+
   const getImages = async () => {
-    const newImages = await getGifs(category,cant);
+    const newImages = await getGifs(category, cant);
     setImages(newImages);
     setIsLoading(false);
   };
-  const deleteCategory = (deleteCat) =>{
-    setImages(images.filter(img => img.name === deleteCat))
+  const deleteCategory = (deleteCat) => {
+    setImages(images.filter((img) => img.name === deleteCat));
   };
 
   useEffect(() => {
@@ -22,6 +22,6 @@ export const useImages = (category,cant) => {
   return {
     images,
     isLoading,
-    deleteCategory
+    deleteCategory,
   };
 };

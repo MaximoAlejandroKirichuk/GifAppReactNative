@@ -1,6 +1,6 @@
-import { SafeAreaView, Text, View } from 'react-native'
+import { SafeAreaView, Text} from 'react-native'
 import {globalStyles} from '../styles/globalStyles.js'
-import HomeGrid from '../components/HomeGrid.jsx'
+import {GridGifs} from '../components/GridGifs.jsx'
 
 
 export const Home = () => {
@@ -17,7 +17,10 @@ export const Home = () => {
 
   return (
     <SafeAreaView style = {globalStyles.container}>
-      <HomeGrid gifs = {trendingCategories}/>
+      <GridGifs gifs = {trendingCategories} >
+         <Text style={globalStyles.title}>Trending Topics of Gif</Text>
+         
+      </GridGifs>
     </SafeAreaView>
   )
 }

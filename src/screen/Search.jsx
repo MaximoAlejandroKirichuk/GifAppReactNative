@@ -1,6 +1,6 @@
 
 import { SafeAreaView, View } from 'react-native';
-import { Category, AddGif } from '../components';
+import { Gifs, AddCategory } from '../components';
 import { globalStyles, searchStyles } from '../styles';
 import { useSelector } from 'react-redux';
 
@@ -12,15 +12,14 @@ export const Search = () => {
   return (
     <SafeAreaView style={globalStyles.container}>
       
-      <AddGif/>
+      <AddCategory/>
       
       <View style={searchStyles.categoryList}>
-        <Category
+        <Gifs
           categoriesId={categories}
         />
       </View>
-
-
+      
     </SafeAreaView>
   )
 

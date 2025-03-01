@@ -1,8 +1,8 @@
 import { FlatList} from 'react-native'
 import { GifGrid } from './GifGrid';
-import { useSelector } from 'react-redux';
 
-export const Category = ({ categoriesId  }) => {
+
+export const Gifs = ({ categoriesId  }) => {
   return (
     <FlatList
       data={categoriesId}
