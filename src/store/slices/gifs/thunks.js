@@ -20,7 +20,7 @@ export const getGifs = (category, cant) => {
       url: img.images?.downsized_medium?.url,
     }));
 
-    console.log('estos son los gifs que mando',Gifs);
+    console.log('estos son los gifs que mando, pero manda el ultimo',Gifs);
     
     dispatch(setGifs(Gifs ));
   };
