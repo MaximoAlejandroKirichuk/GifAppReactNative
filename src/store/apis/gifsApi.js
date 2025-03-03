@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-const apiKey = "6Gvtm2Njsp14WvJcKzHBJHHILJsoH7Jq";
+const apiKey = "fww99iX70sEXZQ6Yz86q10g4UTKhtLil";
 
 export const gifsApi = createApi({
   reducerPath: 'gifsApi',

@@ -1,35 +1,38 @@
 import { Text, View, TouchableOpacity } from 'react-native'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import * as Haptics from 'expo-haptics';
-import { useDispatch } from 'react-redux';
-import { setFavoritesGif } from '../store/slices/favoritesGif/favoritesGifSlices';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryFavoriteGif } from '../store/slices/gifs/gifsSlices.js'
 import { searchStyles } from '../styles';
-export const CategoryTitle = ({ category, deleteCategory }) => {
-
+import { deleteCategory } from '../store/slices/categoriesGif';
+export const CategoryTitle = ({ category }) => {
+    const { gifs } = useSelector(state => state.gifs)
     const dispatch = useDispatch()
     return (
         <View style={searchStyles.titleContainer}>
             <Text
                 style={searchStyles.title}
                 numberOfLines={1}
-                adjustToSizeFit
+                adjustsFontSizeToFit
             >
 
                 {category}</Text>
             <View style={searchStyles.iconsContainer}>
-                
+
                 <TouchableOpacity
                     style={searchStyles.button}
                     onPress={() => {
                         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
-                        dispatch(setFavoritesGif(category))}
+                        dispatch(setCategoryFavoriteGif(gifs));
+                    }
+
                     }
                 >
                     <AntDesign name="staro" size={24} color="black" />
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={searchStyles.button}
-                    onPress={deleteCategory}
+                    onPress={() => dispatch(deleteCategory(category))}
                 >
                     <AntDesign name="closecircleo" size={24} color="black" />
                 </TouchableOpacity>

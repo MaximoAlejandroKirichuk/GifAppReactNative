@@ -1,27 +1,23 @@
-import { Text, View } from 'react-native'
-import { useSelector } from 'react-redux'
+import { Text, View, FlatList } from 'react-native'
 import { globalStyles } from '../styles'
-import { GridGifs } from '../components/GridGifs'
-import { useEffect } from 'react'
+
+import { useSelector } from 'react-redux'
 
 
 export const SaveFavoritesCategory = () => {
-  //use redux for recive a favorites categories
-  // const { favoritesGif } = useSelector(state => state.favoritesGifSlices)
+  const { favoritesGifs, gifs } = useSelector(state => state.gifs)
 
-  // useEffect(() => {
-  //   console.log(favoritesGif)  
-  // }, [favoritesGif])
-  
   return (
     <View style={globalStyles.container}>
       {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A CACHE */}
 
+      {console.log('desde save', favoritesGifs)}
 
-      
-      <GridGifs>
-        <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
-      </GridGifs>
+      <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
+
+      //TODO: MOSTRAR LAS FAVORITES CATEGORIES
+
+
     </View>
   )
 }
