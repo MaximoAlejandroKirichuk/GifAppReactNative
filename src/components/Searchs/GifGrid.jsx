@@ -8,7 +8,7 @@ import { CategoryTitle } from '../CategoryTitle'
 import { useEffect } from 'react'
 import { globalStyles } from '../../styles/globalStyles'
 
-export const GifGrid = ({ category, cant }) => {
+export const GifGrid = ({ category, cant  }) => {
 
   const { data = [], isError, isLoading, error } = useGetGifsByCategoryQuery({ category, cant })
   const dispatch = useDispatch();
@@ -16,7 +16,8 @@ export const GifGrid = ({ category, cant }) => {
   useEffect(() => {
     // Dispatch the action properly
     dispatch(setGifs(data))
-  }, [data, dispatch]) // Add dispatch to dependencies
+  }, [data, dispatch])
+  
   return (
     //TODO: MEJORAR LOS ERRORES
     <View>

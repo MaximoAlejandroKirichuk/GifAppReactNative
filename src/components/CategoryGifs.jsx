@@ -3,9 +3,10 @@ import { ItemGif } from './ItemGif';
 import { globalStyles } from '../styles/globalStyles';
 import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
 
-export const CategoryGifs = ({ category, cant }) => {
+export const CategoryGifs = ({ category, cant , subcategories }) => {
 
   const { data = [], isError, isLoading,error } = useGetGifsByCategoryQuery({category, cant})
+
 
   return (
     <View>
@@ -20,7 +21,8 @@ export const CategoryGifs = ({ category, cant }) => {
           <ItemGif 
             key={item.id} 
             url={item.url} 
-            title={category} 
+            title={category}
+            subcategories = {subcategories} 
           />
         )}
       />

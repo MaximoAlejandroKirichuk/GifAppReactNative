@@ -2,8 +2,9 @@ import { Image, Text, Pressable, View } from "react-native"
 import { homeStyles } from "../styles"
 import * as Haptics from 'expo-haptics';
 
-export const ItemGif = ({ imgKey, url, title }) => {
-    
+
+export const ItemGif = ({ imgKey, url, title, subcategories, navigation }) => {
+
     return (
         <>
             <Pressable key={imgKey}
@@ -13,6 +14,9 @@ export const ItemGif = ({ imgKey, url, title }) => {
                 })}
                 onPress={() => {
                     Haptics.impactAsync()
+                    //Todo: mostrar los detalles
+                    navigation.navigate('CategorySelected',{subcategories, title})
+                    
                 }}
             >
                 <View style={homeStyles.overlay} >

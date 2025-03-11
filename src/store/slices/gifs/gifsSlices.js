@@ -17,14 +17,21 @@ export const gifsSlices = createSlice({
       state.isLoading = false;
       state.gifs = payload;
     },
-    setCategoryFavoriteGif: (state, {payload}) => {
-      state.favoritesGifs = [payload, ...state.gifs.filter(gif => gif.id === payload.id)];      
+
+    setCategoryFavoriteGif: (state, { payload }) => {
+      // Verificar si ya está en favoritos
+      const exists = state.favoritesGifs.some(gif => gif.id === payload.id);
+      
+      if (!exists) {
+        state.favoritesGifs = [payload, ...state.favoritesGifs];  
+      }
     },
+    
     removeFavoriteCategory: (state, { payload }) => {
       state.favoritesGifs = state.favoritesGifs.filter(
-        (category) => category !== payload
+        (gif) => gif.id !== payload.id 
       );
-    },
+    },    
   },
 });
 

@@ -1,22 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { Provider } from 'react-redux';
-import { store } from '../store/store';
-
-import { HomeStack } from './HomeStack';
+import {  useSelector } from 'react-redux';
 import { BottomTabNavigator } from './BottomTabNavigator';
+import AuthStack from './AuthStack';
 
 export const Navigator = () => {
-    
+    const {user} = useSelector(state => state.userSlice.value)
+
     return (
         <NavigationContainer>{/* es un componente de nivel superior */}
-            <Provider store={store}>
-            {/* <HomeStack/> */}
-            
-            <BottomTabNavigator/>
-            <StatusBar style='dark'></StatusBar>
-            
-            </Provider>
+        {console.log(user)}
+            {user ? <BottomTabNavigator /> : <AuthStack />}
+            <StatusBar style='dark' />
         </NavigationContainer>
     )
 }

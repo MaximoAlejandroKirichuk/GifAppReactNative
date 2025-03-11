@@ -4,6 +4,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { Home, Search, SaveFavoritesCategory } from "../screen";
 import { Color } from "../global/Colors";
 import { globalStyles } from "../styles/globalStyles";
+import { HomeStack } from "./HomeStack";  // Asegúrate de importar HomeStack
+
 const Tab = createBottomTabNavigator();
 
 export const BottomTabNavigator = () => {
@@ -13,7 +15,7 @@ export const BottomTabNavigator = () => {
                 tabBarStyle: globalStyles.tabBar,
                 tabBarShowLabel: false //hace que se borren las label
             }}
-            initialRouteName='Home'
+            initialRouteName='HOME'
         >
             <Tab.Screen
                 name='SaveFavoritesCategory'
@@ -32,8 +34,8 @@ export const BottomTabNavigator = () => {
             />
 
             <Tab.Screen
-                name='Home'
-                component={Home}
+                name='HOME'
+                component={HomeStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>

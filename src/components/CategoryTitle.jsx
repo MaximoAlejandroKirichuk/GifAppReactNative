@@ -4,10 +4,13 @@ import * as Haptics from 'expo-haptics';
 import { useDispatch, useSelector } from 'react-redux';
 import { setCategoryFavoriteGif } from '../store/slices/gifs/gifsSlices.js'
 import { searchStyles } from '../styles';
-import { deleteCategory } from '../store/slices/categoriesGif';
+import { deleteCategory, setFavoriteCategories } from '../store/slices/categoriesGif';
+
+
 export const CategoryTitle = ({ category }) => {
-    const { gifs } = useSelector(state => state.gifs)
+    const { gifs, favoritesGifs } = useSelector(state => state.gifs)
     const dispatch = useDispatch()
+
     return (
         <View style={searchStyles.titleContainer}>
             <Text
@@ -15,18 +18,16 @@ export const CategoryTitle = ({ category }) => {
                 numberOfLines={1}
                 adjustsFontSizeToFit
             >
-
-                {category}</Text>
+                {category}
+            </Text>
             <View style={searchStyles.iconsContainer}>
-
                 <TouchableOpacity
                     style={searchStyles.button}
                     onPress={() => {
                         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+                        dispatch(setFavoriteCategories(category))
                         dispatch(setCategoryFavoriteGif(gifs));
-                    }
-
-                    }
+                    }}
                 >
                     <AntDesign name="staro" size={24} color="black" />
                 </TouchableOpacity>
