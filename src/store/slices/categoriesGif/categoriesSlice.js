@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const categoriesSlice = createSlice({
+
   name: "categoriesSlice",
   initialState: {
     favoriteCategory: [],
@@ -8,8 +9,7 @@ export const categoriesSlice = createSlice({
   },
   reducers: {
     setCategories: (state, { payload }) => {
-      if (state.categories.some((category) => category.name === payload))
-        return;
+      if (state.categories.some((category) => category.name === payload))return;
       state.categories = [{ name: payload }, ...state.categories];
     },
     deleteCategory: (state, { payload }) => {
@@ -18,8 +18,7 @@ export const categoriesSlice = createSlice({
       );
     },
     setFavoriteCategories: (state, { payload }) => {
-      if (state.favoriteCategory.some((category) => category.name === payload))
-        return;
+      if (state.favoriteCategory.some((category) => category.name === payload)) return;
       state.favoriteCategory = [{ name: payload }, ...state.favoriteCategory];
     },
   },

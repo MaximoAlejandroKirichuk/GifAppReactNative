@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 
 import { useDispatch } from 'react-redux'
-import { useSignUpMutation } from '../services/authService'
+import { useSignUpMutation } from '../store/apis/authService'
 import { setUser } from '../store/slices/user/userSlice'
 
 import InputForm from '../components/inputForm'

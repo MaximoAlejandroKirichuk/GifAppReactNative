@@ -5,7 +5,6 @@ export const gifsSlices = createSlice({
   initialState: {
     favoritesGifs: [],
     gifs: [],
-    status: "idle", //'idle'| 'loading' | 'succeeded' | 'failed'
     error: null,
     isLoading: false,
   },
@@ -19,7 +18,6 @@ export const gifsSlices = createSlice({
     },
 
     setCategoryFavoriteGif: (state, { payload }) => {
-      // Verificar si ya está en favoritos
       const exists = state.favoritesGifs.some(gif => gif.id === payload.id);
       
       if (!exists) {

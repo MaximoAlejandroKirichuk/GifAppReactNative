@@ -1,10 +1,10 @@
 import {  View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Search, SaveFavoritesCategory } from "../screen";
+import { HomeStack } from "./HomeStack"; 
 import AntDesign from '@expo/vector-icons/AntDesign';
-import { Home, Search, SaveFavoritesCategory } from "../screen";
-import { Color } from "../global/Colors";
 import { globalStyles } from "../styles/globalStyles";
-import { HomeStack } from "./HomeStack";  // Asegúrate de importar HomeStack
+import { Color } from "../global/Colors";
 
 const Tab = createBottomTabNavigator();
 
@@ -13,7 +13,7 @@ export const BottomTabNavigator = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle: globalStyles.tabBar,
-                tabBarShowLabel: false //hace que se borren las label
+                tabBarShowLabel: false //delete label
             }}
             initialRouteName='HOME'
         >
