@@ -10,7 +10,7 @@ export const categoriesSlice = createSlice({
   reducers: {
     setCategories: (state, { payload }) => {
       if (state.categories.some((category) => category.name === payload))return;
-      state.categories = [{ name: payload }, ...state.categories];
+      state.categories = [{ name: payload }];
     },
     deleteCategory: (state, { payload }) => {
       state.categories = state.categories.filter(

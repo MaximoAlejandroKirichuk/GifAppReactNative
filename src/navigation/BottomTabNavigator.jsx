@@ -1,10 +1,12 @@
-import {  View } from "react-native";
+import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Search, SaveFavoritesCategory } from "../screen";
-import { HomeStack } from "./HomeStack"; 
+import { Search, SaveFavoritesCategory, MyProfile } from "../screen";
+import { HomeStack } from "./HomeStack";
+
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { globalStyles } from "../styles/globalStyles";
 import { Color } from "../global/Colors";
+import { MyProfileStackNavigator } from "./MyProfileStackNavigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -17,6 +19,21 @@ export const BottomTabNavigator = () => {
             }}
             initialRouteName='HOME'
         >
+            <Tab.Screen
+                name='My Profile'
+                component={MyProfileStackNavigator}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <AntDesign
+                                name="user"
+                                size={24}
+                                color={focused ? Color.buttons : Color.gray}
+                            />
+                        </View>
+                    )
+                }}
+            />
             <Tab.Screen
                 name='SaveFavoritesCategory'
                 component={SaveFavoritesCategory}

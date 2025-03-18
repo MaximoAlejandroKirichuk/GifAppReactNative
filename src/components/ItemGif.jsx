@@ -1,10 +1,11 @@
 import { Image, Text, Pressable, View } from "react-native"
 import { homeStyles } from "../styles"
 import * as Haptics from 'expo-haptics';
+import { useNavigation } from "@react-navigation/native";
 
 
-export const ItemGif = ({ imgKey, url, title, subcategories, navigation }) => {
-
+export const ItemGif = ({ imgKey, url, title, subcategories }) => {
+    const navigation = useNavigation();
     return (
         <>
             <Pressable key={imgKey}

@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import { View, Text, Pressable } from 'react-native'
 
 import { useDispatch } from 'react-redux'
-import { useSignUpMutation } from '../store/apis/authService'
+import { useSignUpMutation } from '../services/authService'
 import { setUser } from '../store/slices/user/userSlice'
 
 import InputForm from '../components/inputForm'
 import SubmitButton from '../components/SubmitBotton'
-import { Color } from '../global/Colors'
+import { AuthStyles } from '../styles/AuthStyles'
 
 
 
@@ -33,6 +33,7 @@ const Signup = ({ navigation }) => {
         token: result.data.idToken,
       }));
     } else if (result.isError) {
+      //TODO:  MODAL ERROR EXPECIFICO
       console.log("Sign-up failed: ", result.error); // Verificar si hay error
     }
   }, [result]);
@@ -59,9 +60,9 @@ const Signup = ({ navigation }) => {
 
 
   return (
-    <View style={styles.main}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Sign up</Text>
+    <View style={AuthStyles.main}>
+      <View style={AuthStyles.container}>
+        <Text style={AuthStyles.title}>Sign up</Text>
 
         <InputForm label="Email" onChange={text => handleChange("email", text)} error={initialValue.errorMail} />
         <InputForm label="Password" onChange={text => handleChange("password", text)} error={initialValue.errorPassword} isSecure />
@@ -69,50 +70,14 @@ const Signup = ({ navigation }) => {
 
         <SubmitButton onPress={onSubmit} title="Send" />
 
-        <Text style={styles.sub}>Already have an account?</Text>
+        <Text style={AuthStyles.sub}>Already have an account?</Text>
         <Pressable onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.subLink}>Login</Text>
+          <Text style={AuthStyles.subLink}>Login</Text>
         </Pressable>
       </View>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  main: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: Color.base,
-  },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '80%',
-    padding: 20,
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    marginBottom: 20,
-  },
-  sub: {
-    textAlign: 'center',
-    marginTop: 10,
-  },
-  subLink: {
-    textAlign: 'center',
-    color: 'blue',
-    marginTop: 5,
-  },
-});
 
 export default Signup;

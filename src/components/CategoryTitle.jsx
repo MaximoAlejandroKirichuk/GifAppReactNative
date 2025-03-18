@@ -8,7 +8,7 @@ import { deleteCategory, setFavoriteCategories } from '../store/slices/categorie
 
 
 export const CategoryTitle = ({ category }) => {
-    const { gifs, favoritesGifs } = useSelector(state => state.gifs)
+    const { gifs } = useSelector(state => state.gifs)
     const dispatch = useDispatch()
 
     return (

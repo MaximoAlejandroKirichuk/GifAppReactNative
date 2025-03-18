@@ -16,7 +16,8 @@ export const SaveFavoritesCategory = () => {
 
 
       <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
-      <FlatList
+      {/* //Todo: MOSTRAR EL PRIMER ELEMENTO DE LAS CATEGORIAS GUARDADAS  */}
+      {/* <FlatList
         data={favoriteCategory}
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => {
@@ -25,7 +26,7 @@ export const SaveFavoritesCategory = () => {
               <Text style={globalStyles.subTitle}>{item.title}</Text>
             </View>)
         }}
-      />
+      /> */}
       <FlatList
         data={favoritesGifs.flat()}
         keyExtractor={(item) => item.name}

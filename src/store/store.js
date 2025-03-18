@@ -4,7 +4,9 @@ import { categoriesSlice } from './slices/categoriesGif'
 import { gifsSlices } from './slices/gifs/gifsSlices';
 import { userSlice } from './slices/user/userSlice';
 
-import { gifsApi, trendingCategoriesApi, authApi } from './apis';
+import { gifsApi, trendingCategoriesApi } from './apis';
+import { authApi } from '../services/authService';
+import { userApi } from '../services/userService';
 
 
 export const store = configureStore({
@@ -18,8 +20,9 @@ export const store = configureStore({
     [gifsApi.reducerPath]: gifsApi.reducer,
     [trendingCategoriesApi.reducerPath]: trendingCategoriesApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
+    [userApi.reducerPath]: userApi.reducer,
   },
   
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(gifsApi.middleware, trendingCategoriesApi.middleware, authApi.middleware),
+    getDefaultMiddleware().concat(gifsApi.middleware, trendingCategoriesApi.middleware, authApi.middleware, userApi.middleware),
 });

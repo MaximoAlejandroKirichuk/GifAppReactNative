@@ -11,10 +11,9 @@ export const GridGifs = ({ gifs, children }) => {
             <FlatList
                 data={gifs}
                 numColumns={2}
-                keyExtractor={(item) => item.id}
+                keyExtractor={(item) => item.id }
                 renderItem={({ item }) => <CategoryGifs category={item.name} cant={1} subcategories={item.subcategories}/>}
             />
-
         </View>
     )
 }
