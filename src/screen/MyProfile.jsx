@@ -20,7 +20,10 @@ export const MyProfile = () => {
 
   return (
     <View style={globalStyles.container}>
-       {/* //TODO: HACER EL LOADING, MOSTRAR LOS DATOS DE LA CUENTA Y CUANTOS GIFS TIENE LIKEADOS Y DE DONDE ESTA */}
+       {/* //TODO: HACER EL LOADING, */}
+       {/* //TODO: HACER MOSTRAR LOS DATOS DE LA CUENTA  */}
+       {/* //TODO: cambiar la foto de perfil desde galeria  */}
+       {/* //TODO: Y CUANTOS GIFS TIENE LIKEADOS Y DE DONDE ESTA } */}
       {
         imageFromBase || imageCamera 
         ? 

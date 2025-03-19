@@ -12,10 +12,8 @@ export const categoriesSlice = createSlice({
       if (state.categories.some((category) => category.name === payload))return;
       state.categories = [{ name: payload }];
     },
-    deleteCategory: (state, { payload }) => {
-      state.categories = state.categories.filter(
-        (category) => category.name !== payload
-      );
+    deleteCategory: (state) => {
+      state.categories = null;
     },
     setFavoriteCategories: (state, { payload }) => {
       if (state.favoriteCategory.some((category) => category.name === payload)) return;

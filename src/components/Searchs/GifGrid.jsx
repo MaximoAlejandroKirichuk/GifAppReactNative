@@ -19,7 +19,6 @@ export const GifGrid = ({ category, cant  }) => {
   }, [data, dispatch])
   
   return (
-    //TODO: MEJORAR LOS ERRORES
     <View>
       {
         isLoading && <Text style={globalStyles.loadingText}>Loading...</Text>
@@ -31,8 +30,8 @@ export const GifGrid = ({ category, cant  }) => {
       )}
       {
         (data.length !== 0)
-          ? <CategoryTitle category={category} />
-          : null
+          ? <CategoryTitle category={[category]} />
+          : <Text style={globalStyles.title}>That category was not found</Text>
       }
       {
         data.map(img => (

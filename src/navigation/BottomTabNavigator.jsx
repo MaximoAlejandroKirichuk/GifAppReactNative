@@ -1,12 +1,13 @@
 import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Search, SaveFavoritesCategory, MyProfile } from "../screen";
+import { Search } from "../screen";
 import { HomeStack } from "./HomeStack";
 
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { globalStyles } from "../styles/globalStyles";
 import { Color } from "../global/Colors";
 import { MyProfileStackNavigator } from "./MyProfileStackNavigator";
+import { SaveFavoritesCategoryStack } from "./SaveFavoritesCategoriesStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -35,8 +36,8 @@ export const BottomTabNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name='SaveFavoritesCategory'
-                component={SaveFavoritesCategory}
+                name='SaveFavoritesCategoryStack'
+                component={SaveFavoritesCategoryStack}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>

@@ -1,11 +1,13 @@
-import { Text, View, FlatList,Image } from 'react-native'
+import { Text, View, FlatList,Image, Pressable } from 'react-native'
 import { globalStyles } from '../styles'
 
 import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useNavigation } from '@react-navigation/native'
+
 
 
 export const SaveFavoritesCategory = () => {
+  const navigation = useNavigation()
   const { favoritesGifs = [] } = useSelector(state => state.gifs);
   const { favoriteCategory } = useSelector(state => state.categories);
   const flatFavoriteGifs = favoritesGifs.flat();  // Esto elimina ese array anidado
@@ -13,8 +15,7 @@ export const SaveFavoritesCategory = () => {
   return (
     <View style={globalStyles.container}>
       {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A CACHE */}
-{     
-      console.log(flatFavoriteGifs)}
+
 
       <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
    
@@ -22,11 +23,11 @@ export const SaveFavoritesCategory = () => {
         data={favoriteCategory}
         keyExtractor={(item) => item.name}
         renderItem={({ item, index }) => {
-
-          //TODO: ARREGLAR ESTO, MUESTRA SIEMPRE EL MISMO GIF
+          
+          //TODO: ARREGLAR ESTO, MUESTRA SIEMPRE EL MISMO GIF y AGREGAR EL REACT NAVIGATION HASTA IMAGESELECTOR
           const gifForCategory = flatFavoriteGifs[index];
           return (
-            <View key={item.name}>
+            <Pressable key={item.name} onPress={() => navigation.navigate('CategorySelected')}>
             <Text style={globalStyles.subTitle}>{item.name}</Text>
             {gifForCategory ? (
               <Image
@@ -36,7 +37,7 @@ export const SaveFavoritesCategory = () => {
             ) : (
               <Text>No GIF found</Text>
             )}
-          </View>
+          </Pressable>
         )
         }}
       />
