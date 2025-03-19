@@ -1,7 +1,7 @@
 import { TextInput, View, TouchableOpacity, Text } from "react-native"
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useInput } from "../../hooks"
-import { InputError } from "../InputError"
+import { ModalError } from "../ModalError"
 import { Color } from "../../global/Colors";
 import { searchStyles, modalErrorStyles } from "../../styles";
 
@@ -27,10 +27,10 @@ export const AddCategory = () => {
             </TouchableOpacity>
 
 
-            <InputError handleModal={handleModal} modalVisible={modalVisible}>
+            <ModalError handleModal={handleModal} modalVisible={modalVisible}>
                 <Text style={modalErrorStyles.titleModal}>Error</Text>
                 <Text style={modalErrorStyles.textModal} >You cannot search for a category if it has less than 2 characters</Text>
-            </InputError>
+            </ModalError>
         </View>
     )
 }

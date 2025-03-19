@@ -7,27 +7,36 @@ import { setUser } from '../store/slices/user/userSlice'
 import { AuthStyles } from '../styles/AuthStyles'
 import { useSignInMutation } from '../services/authService'
 import { useDispatch } from 'react-redux'
+import { useInput } from '../hooks'
+import { ModalError } from '../components'
+import { modalErrorStyles } from '../styles'
 
 const Login = ({ navigation }) => {
   const [initialValue, setInitialValue] = useState({
     email: '',
     password: '',
   })
-
+  const { handleModal, modalVisible } = useInput()
   const dispatch = useDispatch();
   const [triggerSignUp, result] = useSignInMutation();
 
   useEffect(() => {
+    // Cuando la respuesta de la API cambia, manejamos los casos de éxito y error
+    if (result.isError) {
+      // Mostrar modal de error solo si el código de error es el esperado
+      if (result.error.data.error.errors[0].message === 'INVALID_LOGIN_CREDENTIALS') {
+        handleModal(true);  // Cambiar el estado para que el modal se muestre
+      }
+      console.log("Login failed: ", result.error.data.error.errors[0].message); // Verificar si hay error
+    }
+
     if (result.isSuccess) {
+      // En caso de éxito, guardamos el usuario en el estado global
       dispatch(setUser({
         email: result.data.email,
         token: result.data.idToken,
       }));
-    } else if (result.isError) {
-      //TODO:  MODAL ERROR EXPECIFICO
-      console.log("Sign-up failed: ", result.error); // Verificar si hay error
     }
-   
   }, [result]);
 
 
@@ -35,12 +44,23 @@ const Login = ({ navigation }) => {
     setInitialValue(prevState => ({ ...prevState, [field]: value }))//EN FIELD ENTRA AL CAMPO QUE SE MANDA y modifica con el value que le llega
   }
 
-  const onSubmit =  () => {
+  const onSubmit = () => {
     const { email, password } = initialValue;
     console.log("Form: ", initialValue); // Verificar si se dispara
 
-    // Basic validation for passwords matching
-    
+    // Validación básica:
+    // 1. Verificar que los campos no estén vacíos
+    if (!email || !password) {
+      handleModal(true);
+      return; // Si hay un campo vacío, no enviamos la solicitud
+    }
+
+    // 2. Verificar que el correo electrónico tenga el formato correcto
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(email)) {
+      handleModal(true);
+      return; // Si el correo no es válido, no enviamos la solicitud
+    }
 
     // Trigger sign-up API request
     triggerSignUp({ email, password, returnSecureToken: true });
@@ -61,6 +81,14 @@ const Login = ({ navigation }) => {
         <Pressable onPress={() => navigation.navigate("Signup")}>
           <Text style={AuthStyles.subLink}>Sign up</Text>
         </Pressable>
+
+        {modalVisible && (
+          <ModalError handleModal={handleModal} modalVisible={modalVisible}>
+            <Text style={modalErrorStyles.titleModal}>Invalid email or password</Text>
+            <Text style={modalErrorStyles.textModal}>The email is not registered or the password is incorrect.</Text>
+          </ModalError>
+        )}
+        
       </View>
     </View>
   );

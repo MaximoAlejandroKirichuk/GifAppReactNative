@@ -3,7 +3,7 @@ import * as Haptics from 'expo-haptics';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { modalErrorStyles } from '../styles/modalErrorStyles'
 
-export const InputError = ({ handleModal, modalVisible, children }) => {
+export const ModalError = ({ handleModal, modalVisible, children }) => {
 
     return (
         <Modal visible={modalVisible} animationType='slide' transparent={true}>

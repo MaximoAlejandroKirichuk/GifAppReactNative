@@ -16,7 +16,10 @@ export const HomeStack = () => {
                 name='Home'
                 
             />
-            <Stack.Screen name="CategorySelected" component={CategorySelected}  />
+            <Stack.Screen 
+                name="CategorySelected" 
+                component={CategorySelected}  
+                />
         </Stack.Navigator>
     )
 }
