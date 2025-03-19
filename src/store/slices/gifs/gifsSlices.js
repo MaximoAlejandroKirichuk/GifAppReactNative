@@ -18,11 +18,14 @@ export const gifsSlices = createSlice({
     },
 
     setCategoryFavoriteGif: (state, { payload }) => {
-      const exists = state.favoritesGifs.some(gif => gif.id === payload.id);
-      
-      if (!exists) {
-        state.favoritesGifs = [payload, ...state.favoritesGifs];  
-      }
+      const gifsToAdd = Array.isArray(payload) ? payload : [payload];
+    
+      gifsToAdd.forEach(gif => {
+        const exists = state.favoritesGifs.some(fav => fav.id === gif.id);
+        if (!exists) {
+          state.favoritesGifs.push(gif); 
+        }
+      });
     },
     
     removeFavoriteCategory: (state, { payload }) => {

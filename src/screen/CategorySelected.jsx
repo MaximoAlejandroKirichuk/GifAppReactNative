@@ -3,6 +3,7 @@ import { GridGifs } from '../components/GridGifs';
 import { searchStyles, globalStyles } from '../styles';
 
 export const CategorySelected = ({ route }) => {
+  //TODO RECIBO CATEGORIA Y MUESTRO PRIMERO 10
   const { subcategories, title } = route.params;
   return (
     <SafeAreaView style={globalStyles.container}>
