@@ -35,8 +35,6 @@ const Signup = ({ navigation }) => {
         token: result.data.idToken,
       }));
     } else if (result.isError) {
-      //TODO:  MODAL ERROR EXPECIFICO
-      console.log("Sign-up failed: ", result.error); // Verificar si hay error
       handleModal(true)
     }
   }, [result]);
@@ -47,8 +45,7 @@ const Signup = ({ navigation }) => {
 
   const onSubmit = () => {
     const { email, password, confirmPassword } = initialValue;
-    console.log("Form: ", initialValue); // Verificar si se dispara
-
+  
     // Validación básica:
     // 1. Verificar que los campos no estén vacíos
     if (!email || !password) {
@@ -60,7 +57,6 @@ const Signup = ({ navigation }) => {
     // 2. Verificar que el correo electrónico tenga el formato correcto
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
-      console.log("Please enter a valid email.");
       handleModal(true)
       return; // Si el correo no es válido, no enviamos la solicitud
     }
