@@ -1,36 +1,61 @@
 import { useState } from 'react';
-import { View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, Linking, Alert } from 'react-native';
+
+
 import * as ImagePicker from 'expo-image-picker';
+import * as ExpoLibrary from 'expo-media-library';
+
+import { useNavigation } from '@react-navigation/native';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { setCameraImage } from '../store/slices/user/userSlice';
-import { usePostProfileImageMutation } from '../services/userService';
-import { useNavigation } from '@react-navigation/native';
-import { globalStyles } from '../styles';
+import { useGetProfileImageQuery, usePostProfileImageMutation } from '../services/userService';
+
+import { globalStyles, modalErrorStyles } from '../styles';
 import { Color } from '../global/Colors';
-
+import { BottonPressable } from '../components/Botton';
+import { ModalError } from '../components/ModalError';
+import { useInput } from '../hooks';
+import { myProfileStyles } from '../styles/myProfileStyles';
 export const ImageSelector = () => {
-
-  const [image, setImage] = useState(null)
-  const [triggerPostImage, result] = usePostProfileImageMutation()
   const navigation = useNavigation();
+  const { handleModal, modalVisible } = useInput()
+  const [image, setImage] = useState(null)
+  const [isImageFromCamera, setIsImageFromCamera] = useState(false);
+  const [imageUri, setImageUri] = useState('');
 
   const { localId } = useSelector(state => state.userSlice.value);
-  console.log(localId)
+  const { data: imageFromBase } = useGetProfileImageQuery(localId);
 
+  const [triggerPostImage, result] = usePostProfileImageMutation();
   const dispatch = useDispatch()
 
-  const vefifyCameraPermissions = async () => {
-    // verificar permisos de camara
-    const { granted } = await ImagePicker.requestCameraPermissionsAsync()
-    return granted
-  }
+
+//TODO: REFACTORIZAR TODO CON UN useImageSelector 
+
+
+  const verifyCameraPermissions = async () => {
+    try {
+      // Verificar permisos de la cámara
+      const { granted } = await ImagePicker.requestCameraPermissionsAsync();
+      if (granted) return true;
+      // Si no fue concedido
+      handleModal(true);
+      return false;
+    } catch (error) {
+      console.log("Error al solicitar permisos de cámara:", error);
+      handleModal(true);
+      return false;
+    }
+  };
+  
 
   const pickImage = async () => {
     // seleccionar una imagen
     try {
-      const permissionCamera = await vefifyCameraPermissions()
+      const permissionCamera = await verifyCameraPermissions()
       if (permissionCamera) {
-        let result = await ImagePicker.launchCameraAsync({
+        const result = await ImagePicker.launchCameraAsync({
           mediaTypes: (ImagePicker.MediaType = ['images', 'videos']),
           allowsEditing: true,
           aspect: [1, 1],
@@ -38,109 +63,139 @@ export const ImageSelector = () => {
           quality: 0.2,
         });
 
-
         if (!result.canceled) {
-          const img = `data:image/jpg;base64,${result.assets[0].base64}`
-          setImage(img)
+          const img = `data:image/jpg;base64,${result.assets[0].base64}`;
+          setImage(img);
+          setImageUri(result.assets[0].uri);
+          setIsImageFromCamera(true);
         }
+        
+        
       }
     } catch (error) {
-      console.log(error)
+      handleModal(error)
     }
   }
 
-  const confirmImage = () => {
-    // guardar la imagen
+
+  const verifyGalleryPermission = async () => {
+    try{
+      const { granted } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+      if (granted) return true;
+      // Si no fue concedido
+      handleModal(true);
+      return false;
+    } catch (error) {
+      handleModal(true);
+      return false;
+    }
+  }
+
+
+  const pickGalleryImage = async () => {
 
     try {
-      dispatch(setCameraImage(image))
-      triggerPostImage({ image, localId })
-      navigation.goBack();
+      setIsImageFromCamera(false)
+      const permisssionGallery = await verifyGalleryPermission();
+      
+      if (permisssionGallery) {
+        const result = await ImagePicker.launchImageLibraryAsync({
+          base64: true,
+          allowsEditing: true,
+          aspect: [1, 1],
+          mediaTypes: (ImagePicker.MediaType = ["images"]),
+          quality: 0.2,
+        });
+
+        console.log(result)
+
+        if (!result.canceled) {
+          const image = `data:image/jpeg;base64,${result.assets[0].base64}`
+          setImage(image);
+        }
+      }
     } catch (err) {
       console.log(err)
+    
+    }
+  }
+
+
+  const confirmImage = async () => {
+    // guardar la imagen
+    try {
+      if (!image || image.length === 0) return;
+
+      dispatch(setCameraImage(image))
+      triggerPostImage({ image, localId })
+
+      if (isImageFromCamera && imageUri) {
+        await ExpoLibrary.createAssetAsync(imageUri);
+      }
+      navigation.goBack()
+    } catch (err) {
+      handleModal(true);
+      
     }
 
   }
+
   return (
     <View style={globalStyles.container}>
       {
-        image ? (
+          imageFromBase || image 
+        ? (
           <>
             <Image
-              source={{ uri: image }}
-              style={globalStyles.image}
+              source={{ uri: image || imageFromBase?.image }}
+              style={myProfileStyles.image}
               resizeMode='cover'
             />
-                        //TODO: REFACTORIZAR
-            <Pressable
-              style={styles.button}
+
+            <BottonPressable
+              label={'Take another Photo'}
               onPress={pickImage}
-            >
-              <Text style={styles.text}>Take another photo</Text>
+            />
 
-            </Pressable>
-            <Pressable
-              style={styles.button}
+            <BottonPressable
+              label={'Take photo from galery'}
+              onPress={pickGalleryImage}
+            />
+            {/* //TODO: AGREGAR UN MODAL ERROR CUANDO SE QUIERE AGREGAAR ALGO QUE NO SE ELEGIO */}
+            <BottonPressable
+              label={'Confirm photo'}
               onPress={confirmImage}
-            >
-              <Text style={styles.text}>Confirm photo</Text>
-
-            </Pressable>
-          </>)
+            />
+          </>
+          )
           :
           (
             <>
-              <View style={styles.noPhotoContainer}>
+              <View style={myProfileStyles.noPhotoContainer}>
                 <Text> No photo to show... </Text>
               </View>
-              <Pressable
-                style={styles.button}
+              <BottonPressable
+                label={'Take another Photo'}
                 onPress={pickImage}
-              >
-                <Text>Take photo</Text>
-              </Pressable>
+              />
+
+              <BottonPressable
+                label={'Take photo from galery'}
+                onPress={pickGalleryImage}
+              />
             </>
           )
       }
-
+      {modalVisible && (
+        <ModalError handleModal={handleModal} modalVisible={modalVisible}>
+         <Text style={modalErrorStyles.titleModal}>Permission Error</Text>
+          <BottonPressable 
+                label={'Go to setting to provide permissions'}
+                onPress ={ () => Linking.openSettings()}
+              />
+        </ModalError>
+      )}
 
     </View>
   )
 }
-const styles = StyleSheet.create({
-  button: {
-    backgroundColor: Color.buttons,
-    justifyContent: "center",
-    alignItems: "center",
-    margin: 12,
-    borderRadius: 12,
-    padding: 12,
-    width: "70%",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-
-  text: {
-    color: Color.gray,
-    fontSize: 16,
-  },
-  image: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 20,
-  },
-  noPhotoContainer: {
-    width: 200,
-    height: 200,
-    borderWidth: 2,
-    borderColor: Color.buttons,
-    padding: 10,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
-});

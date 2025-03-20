@@ -9,8 +9,8 @@ const AuthStack = () => {
         <Stack.Navigator
             screenOptions={{ headerShown: false }} //evita la anidacion de cabeceras
         >
-            <Stack.Screen name="Signup" component={Signup} />
             <Stack.Screen name='Login' component={Login}/>
+            <Stack.Screen name="Signup" component={Signup} />
         </Stack.Navigator>
     )
 }

@@ -38,6 +38,7 @@ export const BottomTabNavigator = () => {
             <Tab.Screen
                 name='SaveFavoritesCategoryStack'
                 component={SaveFavoritesCategoryStack}
+                
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <View>
@@ -47,7 +48,8 @@ export const BottomTabNavigator = () => {
                                 color={focused ? Color.buttons : Color.gray}
                             />
                         </View>
-                    )
+                    ), 
+                    headerShown: false,  // Aquí ocultas el header para este Tab específico
                 }}
             />
 

@@ -13,7 +13,7 @@ export const categoriesSlice = createSlice({
       state.categories = [{ name: payload }];
     },
     deleteCategory: (state) => {
-      state.categories = null;
+      state.categories = [];
     },
     setFavoriteCategories: (state, { payload }) => {
       if (state.favoriteCategory.some((category) => category.name === payload)) return;

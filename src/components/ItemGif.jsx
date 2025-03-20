@@ -4,7 +4,7 @@ import * as Haptics from 'expo-haptics';
 import { useNavigation } from "@react-navigation/native";
 
 
-export const ItemGif = ({ imgKey, url, title, subcategories }) => {
+export const ItemGif = ({ imgKey, url, title, }) => {
     const navigation = useNavigation();
     return (
         <>

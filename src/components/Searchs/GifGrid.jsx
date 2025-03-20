@@ -30,7 +30,7 @@ export const GifGrid = ({ category, cant  }) => {
       )}
       {
         (data.length !== 0)
-          ? <CategoryTitle category={[category]} />
+          ? <CategoryTitle category={category} />
           : <Text style={globalStyles.title}>That category was not found</Text>
       }
       {

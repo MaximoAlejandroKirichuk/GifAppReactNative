@@ -25,6 +25,7 @@ export const CategoryTitle = ({ category }) => {
                     style={searchStyles.button}
                     onPress={() => {
                         Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light)
+                        console.log('desde category', category) 
                         dispatch(setFavoriteCategories(category))
                         dispatch(setCategoryFavoriteGif(gifs));
                     }}

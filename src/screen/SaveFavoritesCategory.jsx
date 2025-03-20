@@ -1,4 +1,4 @@
-import { Text, View, FlatList,Image, Pressable } from 'react-native'
+import { Text, View, FlatList, Image, Pressable } from 'react-native'
 import { globalStyles } from '../styles'
 
 import { useSelector } from 'react-redux'
@@ -18,28 +18,21 @@ export const SaveFavoritesCategory = () => {
 
 
       <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
-   
+      {console.log(favoriteCategory)}
       <FlatList
         data={favoriteCategory}
         keyExtractor={(item) => item.name}
-        renderItem={({ item, index }) => {
-          
-          //TODO: ARREGLAR ESTO, MUESTRA SIEMPRE EL MISMO GIF y AGREGAR EL REACT NAVIGATION HASTA IMAGESELECTOR
-          const gifForCategory = flatFavoriteGifs[index];
-          return (
-            <Pressable key={item.name} onPress={() => navigation.navigate('CategorySelected')}>
-            <Text style={globalStyles.subTitle}>{item.name}</Text>
-            {gifForCategory ? (
-              <Image
-                style={globalStyles.image}
-                source={{ uri: gifForCategory.url }}
-              />
-            ) : (
-              <Text>No GIF found</Text>
-            )}
-          </Pressable>
-        )
-        }}
+        renderItem={({ item }) => (
+          <View>
+            <Pressable
+            style={{marginBottom: 30}}
+              label={item.name}
+              onPress={() => navigation.navigate('CategorySelected', { name: item.name })}
+            >
+              <Text>{item.name}</Text>
+            </Pressable>
+          </View>
+        )}
       />
       {/* <FlatList
         data={favoritesGifs.flat()}
@@ -55,7 +48,7 @@ export const SaveFavoritesCategory = () => {
             </View>)
         }}
       /> */}
-      
+
     </View>
   )
 }

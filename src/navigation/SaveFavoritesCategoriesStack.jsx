@@ -10,16 +10,20 @@ export const SaveFavoritesCategoryStack = () => {
     <Stack.Navigator
       initialRouteName='SaveFavoritesCategory'
       screenOptions={{
-        headerShown: false
+        headerShown: true // Esto oculta el header de todas las pantallas en este stack por defecto
       }}
     >
       <Stack.Screen
         name='SaveFavoritesCategory'
         component={SaveFavoritesCategory}
+        
       />
       <Stack.Screen
         name='CategorySelected'
         component={CategorySelected}
+        options={{
+          headerShown: true // Solo el header de esta pantalla será visible
+        }}
       />
     </Stack.Navigator>
   )
