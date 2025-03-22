@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux'
 import { useInput } from '../hooks'
 import { ModalError } from '../components'
 import { modalErrorStyles } from '../styles'
+import { useDataBase } from '../hooks/useDataBase'
 
 const Login = ({ navigation }) => {
   const [initialValue, setInitialValue] = useState({
@@ -19,7 +20,7 @@ const Login = ({ navigation }) => {
   const { handleModal, modalVisible } = useInput()
   const dispatch = useDispatch();
   const [triggerSignUp, result] = useSignInMutation();
-
+  const { insertSession } = useDataBase()
   useEffect(() => {
     // Cuando la respuesta de la API cambia, manejamos los casos de éxito y error
     if (result.isError) {
@@ -30,13 +31,25 @@ const Login = ({ navigation }) => {
       console.log("Login failed: ", result.error.data.error.errors[0].message); // Verificar si hay error
     }
 
-    if (result.isSuccess) {
-      // En caso de éxito, guardamos el usuario en el estado global
-      dispatch(setUser({
-        email: result.data.email,
-        token: result.data.idToken,
-        localId: result.data.localId,
-      }));
+    if (result?.data && result.isSuccess) {
+      (async () => {
+        try {
+          const response = await insertSession({
+            email: result.data.email,
+            localId: result.data.localId,
+            token: result.data.idToken
+          })
+          dispatch(setUser({
+            email: result.data.email,
+            token: result.data.idToken,
+            localId: result.data.localId,
+          }));
+        } catch (error) {
+          console.log(error)
+        }
+
+      })()
+      
     }
   }, [result]);
 

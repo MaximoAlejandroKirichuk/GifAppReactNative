@@ -23,7 +23,8 @@
     "react-redux": "^9.2.0",
     "expo-image-picker": "~16.0.6",
     "expo-file-system": "~18.0.11",
-    "expo-media-library": "~17.0.6"
+    "expo-media-library": "~17.0.6",
+    "expo-sqlite": "~15.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

@@ -12,7 +12,6 @@ export const CategorySelected = () => {
     if (params?.name) {
       navigation.setOptions({
         title: params.name,
-        
       });
       console.log('params: ', params.name);
     }

@@ -18,6 +18,9 @@
         "backgroundColor": "#ffffff"
       },
       "package": "com.anonymous.homepage"
-    }
+    },
+    "plugins": [
+      "expo-sqlite"
+    ]
   }
 }
