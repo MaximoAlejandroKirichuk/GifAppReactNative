@@ -12,11 +12,11 @@ import { setCameraImage } from '../store/slices/user/userSlice';
 import { useGetProfileImageQuery, usePostProfileImageMutation } from '../services/userService';
 
 import { globalStyles, modalErrorStyles } from '../styles';
-import { Color } from '../global/Colors';
 import { BottonPressable } from '../components/Botton';
 import { ModalError } from '../components/ModalError';
 import { useInput } from '../hooks';
 import { myProfileStyles } from '../styles/myProfileStyles';
+
 export const ImageSelector = () => {
   const navigation = useNavigation();
   const { handleModal, modalVisible } = useInput()

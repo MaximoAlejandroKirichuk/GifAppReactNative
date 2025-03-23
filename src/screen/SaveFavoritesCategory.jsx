@@ -1,9 +1,9 @@
 import { Text, View, FlatList, Image, Pressable } from 'react-native'
-import { globalStyles } from '../styles'
 
 import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
+import { globalStyles } from '../styles'
 
 
 export const SaveFavoritesCategory = () => {
@@ -18,7 +18,7 @@ export const SaveFavoritesCategory = () => {
 
 
       <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
-      {console.log(favoriteCategory)}
+      {console.log(flatFavoriteGifs)}
       <FlatList
         data={favoriteCategory}
         keyExtractor={(item) => item.name}
@@ -27,27 +27,14 @@ export const SaveFavoritesCategory = () => {
             <Pressable
             style={{marginBottom: 30}}
               label={item.name}
-              onPress={() => navigation.navigate('CategorySelected', { name: item.name })}
+              onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
             >
               <Text>{item.name}</Text>
             </Pressable>
           </View>
         )}
       />
-      {/* <FlatList
-        data={favoritesGifs.flat()}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => {
-          return (
-            <View key={item.id} style={globalStyles.imagesContainer}>
-              <Image
-                style={globalStyles.image}
-                source={{ uri: item.url }}
-              />
-              <Text key={item.id} style={globalStyles.subTitle}>{item.title}</Text>
-            </View>)
-        }}
-      /> */}
+
 
     </View>
   )
