@@ -29,13 +29,13 @@ export const CategorySelected = () => {
       await downloadResumable.downloadAsync();
 
       if (!(await Sharing.isAvailableAsync())) {
-        Alert.alert('Share is not valid in that phone');
+        Alert.alert('Sharing not available on this device');
         return;
       }
 
       await Sharing.shareAsync(fileUri, { mimeType: 'image/gif' })
     } catch (error) {
-      console.log('Error al compartir Gif: ', error);
+      console.log('Errot to share GIF', error);
     }
   }
 
