@@ -44,7 +44,7 @@ export const CategorySelected = () => {
   return (
     <View style={globalStyles.container}>
       <View style={globalStyles.title}>
-        <Text style={globalStyles.title}>Category Selecter: {params.name}</Text>
+        <Text style={globalStyles.title}>Category Selected: {params.name}</Text>
       </View>
       <FlatList
         data={gifs}
