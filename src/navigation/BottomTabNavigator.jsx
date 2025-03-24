@@ -33,7 +33,8 @@ export const BottomTabNavigator = () => {
                                 color={focused ? Color.buttons : Color.gray}
                             />
                         </View>
-                    )
+                    ),
+                    headerShown: false,  // Aquí ocultas el header para este Tab específico
                 }}
             />
             

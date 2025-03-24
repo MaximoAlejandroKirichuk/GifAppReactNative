@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 export const HomeStack = () => {
     return (
         <Stack.Navigator
-            screenOptions={{ headerShown:false }} //evita la anidacion de cabeceras
+            screenOptions={{ headerShown:true }} //evita la anidacion de cabeceras
         >
 
             <Stack.Screen

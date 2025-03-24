@@ -17,7 +17,7 @@ export const SaveFavoritesCategory = () => {
       {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, Y MOSTRAR LA PRIMERA FOTO DE LA CATEGORIA */}
 
 
-      <Text style={globalStyles.subTitle}>Quickly access what you like</Text>
+      <Text style={globalStyles.title}>Quickly access what you like</Text>
       {console.log(flatFavoriteGifs)}
       <FlatList
         data={favoriteCategory}
