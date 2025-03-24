@@ -30,6 +30,7 @@ export const GifGrid = ({ category, cant }) => {
 
       {
         <FlatList
+          style={{alignItems: 'center'}}
           data={data}
           key={`flatlist-${2}`} // Siempre que cambies numColumns, cambiá este valor
           keyExtractor={(item) => item.id}

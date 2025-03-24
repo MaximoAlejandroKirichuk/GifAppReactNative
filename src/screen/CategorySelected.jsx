@@ -7,7 +7,7 @@ import * as Sharing from 'expo-sharing'
 import { ItemGif } from '../components/Searchs/ItemGif';
 
 export const CategorySelected = () => {
-  //TODO RECIBO CATEGORIA Y MUESTRO PRIMERO 10 desde fav || home
+  //TODO RECIBO CATEGORIA Y MUESTRO PRIMERO 10 desde home
   const params = useRoute().params;
   const { name, gifs } = params
   const navigation = useNavigation();
