@@ -14,27 +14,34 @@ export const SaveFavoritesCategory = () => {
 
   return (
     <View style={globalStyles.container}>
-      {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, Y MOSTRAR LA PRIMERA FOTO DE LA CATEGORIA */}
+      {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, Y MOSTRAR LA PRIMERA FOTO DE LA CATEGORIA y algo si no hay nada */}
 
 
       <Text style={globalStyles.title}>Quickly access what you like</Text>
-      {console.log(flatFavoriteGifs)}
-      <FlatList
-        data={favoriteCategory}
-        keyExtractor={(item) => item.name}
-        renderItem={({ item }) => (
-          <View>
-            <Pressable
-            style={{marginBottom: 30}}
-              label={item.name}
-              onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
-            >
-              <Text>{item.name}</Text>
-            </Pressable>
-          </View>
-        )}
-      />
 
+
+      {
+       favoriteCategory.length !== 0 
+       ?
+
+       <FlatList
+         data={favoriteCategory}
+         keyExtractor={(item) => item.name}
+         renderItem={({ item }) => (
+           <View>
+             <Pressable
+             style={{marginBottom: 30}}
+               label={item.name}
+               onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
+             >
+               <Text>{item.name}</Text>
+             </Pressable>
+           </View>
+         )}
+       />
+
+       :  <Text>PONER ALGO(aca van aparecer tus categorias favoritas)</Text>
+      }
 
     </View>
   )
