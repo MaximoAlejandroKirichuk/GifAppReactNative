@@ -39,6 +39,7 @@ export const GifGrid = ({ category, cant }) => {
             <ItemGif
               key={item.id}
               url={item.url}
+              title={item.title}
             />
           }
         />

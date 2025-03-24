@@ -1,4 +1,4 @@
-import { View, Image } from 'react-native'
+import { View, Image, Alert } from 'react-native'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
@@ -35,8 +35,9 @@ export const MyProfile = () => {
       const response = await truncateSessionTable();
       dispatch(clearUser())
     }catch(err){
-      //TODO MODAL ERROR: 
-      console.log(err)
+      Alert.alert(
+        'Sign Out Error',
+        );
     }
     clearUser();
   }

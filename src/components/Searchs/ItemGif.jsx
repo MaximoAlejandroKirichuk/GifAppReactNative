@@ -1,16 +1,16 @@
-import { Image, Pressable } from "react-native"
+import { Alert, Image, Pressable } from "react-native"
 import { globalStyles } from "../../styles/globalStyles"
 
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing'
 import * as Haptics from 'expo-haptics';
 
-export const ItemGif = ({ gifKey, url }) => {
-  //TODO: MODAL DE PREPARANDO SHARE
+export const ItemGif = ({ gifKey, url, title }) => {
+
   const downloandAndShareGif = async (url) => {
     const gifUrl = url;
     const fileUri = FileSystem.cacheDirectory + 'cat.gif';
-    console.log('hola', url, fileUri);
+    
     try {
       const downloadResumable = FileSystem.createDownloadResumable(gifUrl, fileUri);
       await downloadResumable.downloadAsync();
@@ -22,8 +22,7 @@ export const ItemGif = ({ gifKey, url }) => {
 
       await Sharing.shareAsync(fileUri, { mimeType: 'image/gif' })
     } catch (error) {
-      //TODO MODAL ERROR
-      console.log('Errot to share GIF', error);
+      Alert.alert('Error to share');
     }
   }
 
@@ -37,6 +36,10 @@ export const ItemGif = ({ gifKey, url }) => {
         ...globalStyles.imagesContainer,
         opacity: pressed ? 0.8 : 1,
       })} onPress={() => {
+        Alert.alert(
+          'Preparing your gif to share...',
+          `Title: ${title}`
+        )
         downloandAndShareGif(url)
 
         Haptics.impactAsync()
