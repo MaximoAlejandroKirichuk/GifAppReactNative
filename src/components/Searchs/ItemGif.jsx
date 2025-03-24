@@ -37,6 +37,7 @@ export const ItemGif = ({ gifKey, url }) => {
             <Image
                 style={globalStyles.image}
                 source={{ uri: url }}
+                resizeMode="cover"
             />
         </Pressable>
     )

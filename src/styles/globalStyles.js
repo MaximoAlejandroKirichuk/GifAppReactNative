@@ -25,6 +25,7 @@ export const globalStyles = StyleSheet.create({
     marginHorizontal:8
   },
   image: {
+    flex:1,
     width: 170,
     height: 150,
     borderRadius: 10,
@@ -36,7 +37,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
   },
   subTitle: {
-    textAlign: "center",   // centra el texto horizontalmente
+    textAlign: "center",  
     fontSize: 10,
     fontWeight: "bold",
     marginVertical: 10,
