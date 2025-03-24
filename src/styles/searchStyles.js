@@ -34,7 +34,7 @@ export const searchStyles = StyleSheet.create({
       },
       categoryList:{
         flex:1,
-        width: '90%',
+        width: '95%',
       },
 
       //category title

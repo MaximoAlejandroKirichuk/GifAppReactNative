@@ -7,7 +7,7 @@ export const Gifs = ({ categoriesId  }) => {
     <FlatList
       data={categoriesId}
       keyExtractor={(item) => item}
-      renderItem={({ item }) => <GifGrid category={item.name} cant= {10} />}
+      renderItem={({ item }) => <GifGrid category={item.name} cant= {20} />}
     />
   );
 

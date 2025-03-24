@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 
 export const Search = () => {
-  //TODO: AGREGAR CATEGORY SELECTED DESDE ACA. (QUIERO UTILIZAR UN SOLO SCROLL VIEW que muestre dos columnas) 
+  
   const {categories} = useSelector(state => state.categories)
 
   return (

@@ -19,13 +19,13 @@ export const globalStyles = StyleSheet.create({
     height: 64,
   },
   imagesContainer: {
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
+    flexDirection: 'column',
+    justifyContent:'center',
+    marginVertical: 10,
+    marginHorizontal:8
   },
   image: {
-    margin: 10,
-    width: 150,
+    width: 170,
     height: 150,
     borderRadius: 10,
   },
@@ -36,25 +36,15 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
   },
   subTitle: {
+    textAlign: "center",   // centra el texto horizontalmente
     fontSize: 10,
     fontWeight: "bold",
     marginVertical: 10,
   },
+  
 
   loadingText: {
     fontSize: 30,
     color: Color.primary,
-  },
-  gif: {
-    width: "48%", // Casi la mitad de la pantalla
-    height: 150,
-    margin: 4,
-    borderRadius: 10,
-  },
-  gifSmall: {
-    width: "31%", // Un tercio de la pantalla
-    height: 120,
-    margin: 3,
-    borderRadius: 10,
   },
 });

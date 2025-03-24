@@ -4,6 +4,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { useEffect } from 'react';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing'
+import { ItemGif } from '../components/Searchs/ItemGif';
 
 export const CategorySelected = () => {
   //TODO RECIBO CATEGORIA Y MUESTRO PRIMERO 10 desde fav || home
@@ -41,30 +42,19 @@ export const CategorySelected = () => {
   }
 
   return (
-    <>
-      <View style={searchStyles.categoryList}>
-        <Text style={globalStyles.title}>Cat selecter: {params.name}</Text>
+    <View style={globalStyles.container}>
+      <View style={globalStyles.title}>
+        <Text style={globalStyles.title}>Category Selecter: {params.name}</Text>
       </View>
       <FlatList
-        style={globalStyles}
         data={gifs}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => {
-          return (
-            <Pressable
-              key={item.id}
-              style={globalStyles.imagesContainer}
-              onPress={() => downloandAndShareGif(item.url)}
-            >
-              <Image
-                style={globalStyles.image}
-                source={{ uri: item.url }}
-              />
-              <Text key={item.id} style={globalStyles.subTitle}>{item.title}</Text>
-            </Pressable>)
-        }}
+        numColumns={2}
+        renderItem={({ item }) => (
+          <ItemGif url={item.url} gifKey={item.id}/>
+        )}
       />
-    </>
+    </View>
 
   );
 }
