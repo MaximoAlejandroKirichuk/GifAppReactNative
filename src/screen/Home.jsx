@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, View } from 'react-native'
+import {  SafeAreaView, Text, View } from 'react-native'
 import { globalStyles } from '../styles/globalStyles.js'
 import { GridGifs } from '../components/GridGifs.jsx'
 import { useGetTrendingCategoriesQuery } from '../store/apis/trendingCategoriesApi.js';
@@ -13,10 +13,8 @@ export const Home = () => {
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      <View>
-        {isLoading ? <Text>Loading...</Text> : null}
-      </View>
-
+      
+ 
       {
         !error
           ? (

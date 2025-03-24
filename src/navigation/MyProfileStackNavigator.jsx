@@ -9,7 +9,7 @@ export const MyProfileStackNavigator = () => {
     <Stack.Navigator
       initialRouteName='MyProfile'
       screenOptions={{
-        headerShown: false
+        headerShown: true
       }}
     >
       <Stack.Screen
@@ -19,6 +19,9 @@ export const MyProfileStackNavigator = () => {
       <Stack.Screen
         name='ImageSelector'
         component={ImageSelector}
+        options={{
+          headerShown: true
+        }}
       />
     </Stack.Navigator>
   )

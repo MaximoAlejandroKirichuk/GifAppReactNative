@@ -1,4 +1,4 @@
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { ItemGif } from './ItemGif';
 import { globalStyles } from '../styles/globalStyles';
 import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
@@ -10,7 +10,7 @@ export const CategoryGifs = ({ category, cant , subcategories }) => {
 
   return (
     <View>
-    {isLoading && <Text style={globalStyles.loadingText}>Loading...</Text>}
+    {isLoading && <ActivityIndicator />}
     {isError && <Text>Error: {error?.message}</Text>}
 
     {data && (

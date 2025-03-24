@@ -14,7 +14,7 @@ export const AddCategory = () => {
             
             <TextInput
                 style={searchStyles.input}
-                placeholder="Add Category"
+                placeholder="Search Category"
                 onChangeText={onChange}
                 value={inputValue}
                 numberOfLines={2}
@@ -23,7 +23,7 @@ export const AddCategory = () => {
                 style={searchStyles.containerPlus}
                 onPress={onSubmit}
             >
-                <AntDesign name="plus" size={24} color={Color.base} />
+                <AntDesign name="search1" size={24} color={Color.base} />
             </TouchableOpacity>
 
 

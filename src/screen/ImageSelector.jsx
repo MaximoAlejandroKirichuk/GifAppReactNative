@@ -192,7 +192,7 @@ export const ImageSelector = () => {
           <BottonPressable 
                 label={'Go to setting to provide permissions'}
                 onPress ={ () => Linking.openSettings()}
-              />
+          />
         </ModalError>
       )}
 

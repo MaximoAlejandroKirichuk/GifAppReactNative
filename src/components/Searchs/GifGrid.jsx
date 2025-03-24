@@ -21,6 +21,7 @@ export const GifGrid = ({ category, cant  }) => {
   return (
     <View>
       {
+        //TODO: HACER UN LOADING
         isLoading && <Text style={globalStyles.loadingText}>Loading...</Text>
       }
       {isError && (

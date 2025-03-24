@@ -14,7 +14,7 @@ export const SaveFavoritesCategory = () => {
 
   return (
     <View style={globalStyles.container}>
-      {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A CACHE */}
+      {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, Y MOSTRAR LA PRIMERA FOTO DE LA CATEGORIA */}
 
 
       <Text style={globalStyles.subTitle}>Quickly access what you like</Text>

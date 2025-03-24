@@ -16,7 +16,7 @@ export const ItemGif = ({ imgKey, url, title, }) => {
                 onPress={() => {
                     Haptics.impactAsync()
                     //Todo: mostrar los detalles
-                    navigation.navigate('CategorySelected')
+                    navigation.navigate('CategorySelected', {name: title})
                     
                 }}
             >

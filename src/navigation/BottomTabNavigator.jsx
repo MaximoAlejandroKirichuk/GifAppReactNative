@@ -20,38 +20,6 @@ export const BottomTabNavigator = () => {
             }}
             initialRouteName='HOME'
         >
-            <Tab.Screen
-                name='My Profile'
-                component={MyProfileStackNavigator}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View>
-                            <AntDesign
-                                name="user"
-                                size={24}
-                                color={focused ? Color.buttons : Color.gray}
-                            />
-                        </View>
-                    )
-                }}
-            />
-            <Tab.Screen
-                name='SaveFavoritesCategoryStack'
-                component={SaveFavoritesCategoryStack}
-                
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View>
-                            <AntDesign
-                                name="staro"
-                                size={24}
-                                color={focused ? Color.buttons : Color.gray}
-                            />
-                        </View>
-                    ), 
-                    headerShown: false,  // Aquí ocultas el header para este Tab específico
-                }}
-            />
 
             <Tab.Screen
                 name='HOME'
@@ -68,6 +36,26 @@ export const BottomTabNavigator = () => {
                     )
                 }}
             />
+            
+            <Tab.Screen
+                name='SaveFavoritesCategoryStack'
+                component={SaveFavoritesCategoryStack}
+
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <AntDesign
+                                name="staro"
+                                size={24}
+                                color={focused ? Color.buttons : Color.gray}
+                            />
+                        </View>
+                    ),
+                    headerShown: false,  // Aquí ocultas el header para este Tab específico
+                }}
+            />
+
+
 
             <Tab.Screen
                 name='Search'
@@ -83,6 +71,25 @@ export const BottomTabNavigator = () => {
                         </View>
                     )
                 }}
+            />
+
+            <Tab.Screen
+                name='My Profile'
+                component={MyProfileStackNavigator}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <AntDesign
+                                name="user"
+                                size={24}
+                                color={focused ? Color.buttons : Color.gray}
+                            />
+                        </View>
+                    ),
+                    headerShown: false,  // Aquí ocultas el header para este Tab específico
+
+                }}
+                
             />
         </Tab.Navigator>
     )

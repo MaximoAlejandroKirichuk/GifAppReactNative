@@ -35,6 +35,7 @@ export const CategorySelected = () => {
 
       await Sharing.shareAsync(fileUri, { mimeType: 'image/gif' })
     } catch (error) {
+      //TODO MODAL ERROR
       console.log('Errot to share GIF', error);
     }
   }
