@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 
 import { globalStyles } from '../styles'
+import { BottonPressable } from '../components/Botton'
 
 
 export const SaveFavoritesCategory = () => {
@@ -17,7 +18,7 @@ export const SaveFavoritesCategory = () => {
       {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, Y MOSTRAR LA PRIMERA FOTO DE LA CATEGORIA y algo si no hay nada */}
 
 
-      <Text style={globalStyles.title}>Quickly access what you like</Text>
+      <Text style={globalStyles.title}>Quickly access what you like⚡️</Text>
 
 
       {
@@ -40,7 +41,14 @@ export const SaveFavoritesCategory = () => {
          )}
        />
 
-       :  <Text>PONER ALGO(aca van aparecer tus categorias favoritas)</Text>
+       :  
+       <>
+       <Text style={globalStyles.subTitle}>You don't have any favorite categories yet.🥺</Text>
+       <BottonPressable
+        onPress={() => navigation.navigate('Search')}
+        label='🔍Go to Search for add your favorite categories'
+        />
+        </>
       }
 
     </View>

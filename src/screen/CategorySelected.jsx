@@ -17,29 +17,11 @@ export const CategorySelected = () => {
       navigation.setOptions({
         title: name,
       });
+      //TODO: ARREGLAR EL HOME
       console.log('params: ', gifs);
     }
   }, [params, navigation]);
 
-  const downloandAndShareGif = async (url) => {
-    const gifUrl = url;
-    const fileUri = FileSystem.cacheDirectory + 'cat.gif';
-    console.log('hola',url, fileUri);
-    try {
-      const downloadResumable = FileSystem.createDownloadResumable(gifUrl, fileUri);
-      await downloadResumable.downloadAsync();
-
-      if (!(await Sharing.isAvailableAsync())) {
-        Alert.alert('Sharing not available on this device');
-        return;
-      }
-
-      await Sharing.shareAsync(fileUri, { mimeType: 'image/gif' })
-    } catch (error) {
-      //TODO MODAL ERROR
-      console.log('Errot to share GIF', error);
-    }
-  }
 
   return (
     <View style={globalStyles.container}>

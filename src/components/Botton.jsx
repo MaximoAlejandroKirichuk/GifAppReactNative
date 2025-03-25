@@ -1,13 +1,13 @@
 import { StyleSheet, Text, Pressable } from 'react-native'
 import { Color } from '../global/Colors';
 
-export const BottonPressable = ({ label, onPress, color }) => {
+export const BottonPressable = ({ label, onPress }) => {
     return (
         <Pressable
             style={styles.button}
             onPress={onPress}
         >
-            <Text style={styles.text}>{label}</Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit style={styles.text}>{label}</Text>
 
         </Pressable>
     )
