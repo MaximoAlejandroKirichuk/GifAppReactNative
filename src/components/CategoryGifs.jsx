@@ -1,6 +1,5 @@
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { ItemGif } from './ItemGif';
-import { globalStyles } from '../styles/globalStyles';
 import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
 
 export const CategoryGifs = ({ category, cant , subcategories }) => {

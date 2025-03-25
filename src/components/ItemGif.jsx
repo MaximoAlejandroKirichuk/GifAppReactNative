@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 // esto se usa en el home: y no envia la lista de gif
 
-export const ItemGif = ({ imgKey, url, title, }) => {
+export const ItemGif = ({ imgKey, url, title, subcategories}) => {
     const navigation = useNavigation();
     return (
         <>

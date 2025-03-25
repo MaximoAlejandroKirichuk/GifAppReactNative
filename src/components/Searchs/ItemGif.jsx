@@ -27,10 +27,8 @@ export const ItemGif = ({ gifKey, url, title }) => {
   }
 
 
-
   return (
     <Pressable
-
       key={gifKey}
       style={({ pressed }) => ({
         ...globalStyles.imagesContainer,
@@ -38,7 +36,7 @@ export const ItemGif = ({ gifKey, url, title }) => {
       })} onPress={() => {
         Alert.alert(
           'Preparing your gif to share...',
-          `Title: ${title}`
+          `Title: ${title ? title : 'Gif'}`
         )
         downloandAndShareGif(url)
 

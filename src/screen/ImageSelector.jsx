@@ -14,7 +14,7 @@ export const ImageSelector = () => {
     confirmImage 
   } = useImageSelector();
 
-  // Handle permission alert
+
 
 
   // Handle confirm image when no image is selected

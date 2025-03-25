@@ -20,6 +20,7 @@ export const Home = () => {
           ? (
             //TODO: REFACTORIZAR
             <GridGifs gifs={data} >
+              {console.log(data)}
               <Text style={globalStyles.title}>Trending Topics of Gif</Text>
             </GridGifs>
           )

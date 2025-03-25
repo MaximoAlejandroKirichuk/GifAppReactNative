@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { View, Text, ActivityIndicator, FlatList } from 'react-native'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useGetGifsByCategoryQuery } from '../../store/apis/gifsApi'
 import { setGifs } from '../../store/slices/gifs/gifsSlices'
 
@@ -20,30 +20,27 @@ export const GifGrid = ({ category, cant }) => {
 
   return (
     <View>
-      {
-        isLoading && <ActivityIndicator />
-      }
-      {isError || (data.length !== 0)
-        ? <CategoryTitle category={category} />
-        : <Text style={globalStyles.title}>That category was not found</Text>
-      }
+      {isLoading && <ActivityIndicator size="large"  />}
 
-      {
+      <CategoryTitle category={category} />
+
+      {isError || data.length === 0 ? (
+        <Text style={globalStyles.title}>That category was not found</Text>
+      ) : (
         <FlatList
-          style={{alignItems: 'center'}}
+          style={{ alignItems: 'center' }}
           data={data}
-          key={`flatlist-${2}`} // Siempre que cambies numColumns, cambiá este valor
+          key={`flatlist-${2}`} 
           keyExtractor={(item) => item.id}
           numColumns={2}
-          renderItem={({ item }) =>
+          renderItem={({ item }) => (
             <ItemGif
-              key={item.id}
               url={item.url}
               title={item.title}
             />
-          }
+          )}
         />
-      }
+      )}
     </View>
   )
 }

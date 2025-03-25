@@ -30,13 +30,12 @@ export const SaveFavoritesCategory = () => {
          keyExtractor={(item) => item.name}
          renderItem={({ item }) => (
            <View>
-             <Pressable
-             style={{marginBottom: 30}}
+             <BottonPressable
                label={item.name}
                onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
-             >
-               <Text>{item.name}</Text>
-             </Pressable>
+             />
+               
+             
            </View>
          )}
        />

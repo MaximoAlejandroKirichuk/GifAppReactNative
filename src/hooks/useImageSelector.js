@@ -49,10 +49,10 @@ export const useImageSelector = () => {
   const pickImage = async () => {
     try {
       const permissionCamera = await verifyCameraPermissions();
-
+      
       if (permissionCamera) {
         const result = await ImagePicker.launchCameraAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.Images,
+          mediaTypes: ImagePicker.MediaType = ['images', 'videos'],
           allowsEditing: true,
           aspect: [1, 1],
           base64: true,
