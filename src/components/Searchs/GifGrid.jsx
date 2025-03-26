@@ -8,16 +8,24 @@ import { setGifs } from '../../store/slices/gifs/gifsSlices'
 import { ItemGif } from './ItemGif'
 import { CategoryTitle } from '../CategoryTitle'
 import { globalStyles } from '../../styles/globalStyles'
+import { Color } from '../../global/Colors'
 
 export const GifGrid = ({ category, cant }) => {
 
-  const { data = [], isError, isLoading } = useGetGifsByCategoryQuery({ category, cant })
+  const { data = [], isError, isLoading, isFetching } = useGetGifsByCategoryQuery({ category, cant })
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setGifs(data))
   }, [data, dispatch])
 
+  if(isFetching){
+    return (
+      <View style={{ flex:1, height:"500", justifyContent:"center", alignItems:"center"}}>
+        <ActivityIndicator size={'large'} color={Color.buttons} />
+      </View>
+    )
+  }
   return (
     <View>
       {isLoading && <ActivityIndicator size="large"  />}

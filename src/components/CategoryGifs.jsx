@@ -1,5 +1,5 @@
 import { View, Text, FlatList, ActivityIndicator } from 'react-native';
-import { ItemGif } from './ItemGif';
+import { ItemGifHome } from './ItemGifHome';
 import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
 
 export const CategoryGifs = ({ category, cant , subcategories }) => {
@@ -17,11 +17,11 @@ export const CategoryGifs = ({ category, cant , subcategories }) => {
         data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <ItemGif 
+          <ItemGifHome 
             key={item.id} 
             url={item.url} 
             title={category}
-            subcategories = {subcategories} 
+            subCategories = {subcategories} 
           />
         )}
       />

@@ -10,7 +10,7 @@ export const Home = () => {
   //TODO: GUARDAR EN CACHE LA PETICION Y USAR UN REDUCE ASINCRONO
   
   const { data, error, isLoading } = useGetTrendingCategoriesQuery()
-
+  console.log('dataaaa: ',data);
   return (
     <SafeAreaView style={globalStyles.container}>
       
@@ -18,7 +18,6 @@ export const Home = () => {
       {
         !error
           ? (
-            //TODO: REFACTORIZAR
             <GridGifs gifs={data} >
               {console.log(data)}
               <Text style={globalStyles.title}>Trending Topics of Gif</Text>

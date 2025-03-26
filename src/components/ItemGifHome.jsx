@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 
 // esto se usa en el home: y no envia la lista de gif
 
-export const ItemGif = ({ imgKey, url, title, subcategories}) => {
+export const ItemGifHome = ({ imgKey, url, title, subCategories}) => {
     const navigation = useNavigation();
     return (
         <>
@@ -16,8 +16,8 @@ export const ItemGif = ({ imgKey, url, title, subcategories}) => {
                 })}
                 onPress={() => {
                     Haptics.impactAsync()
-                    //Todo: mostrar los detalles HOME
-                    navigation.navigate('CategorySelected', {name: title})
+                   
+                    navigation.navigate('SubCategoryScreen', {name: title, subCategories: subCategories} )
                     
                 }}
             >

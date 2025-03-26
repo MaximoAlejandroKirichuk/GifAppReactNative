@@ -2,6 +2,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import { Home } from '../screen/Home';
 import { CategorySelected } from '../screen/CategorySelected';
+import { SubCategoryScreen } from '../screen/SubCategoryScreen';
+import { SubCategorySelectedScreen } from '../screen/SubCategorySelectedScreen';
 
 const Stack = createNativeStackNavigator(); 
 
@@ -17,9 +19,13 @@ export const HomeStack = () => {
                 
             />
             <Stack.Screen 
-                name="CategorySelected" 
-                component={CategorySelected}  
-                />
+                name="SubCategoryScreen" 
+                component={SubCategoryScreen}  
+            />
+            <Stack.Screen 
+                name="SubCategorySelectedScreen" 
+                component={SubCategorySelectedScreen}  
+            />
         </Stack.Navigator>
     )
 }

@@ -1,11 +1,11 @@
 import { View, Text, FlatList, Image, Pressable, Linking } from 'react-native'
-import { searchStyles, globalStyles } from '../styles';
+import { globalStyles } from '../styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { ItemGif } from '../components/Searchs/ItemGif';
 
 export const CategorySelected = () => {
-  //TODO RECIBO CATEGORIA Y MUESTRO PRIMERO 10 desde home
+  // RECIBO CATEGORIA Y MUESTRO GIFS
   const params = useRoute().params;
   const { name, gifs } = params
   const navigation = useNavigation();
@@ -15,8 +15,6 @@ export const CategorySelected = () => {
       navigation.setOptions({
         title: name,
       });
-      //TODO: ARREGLAR EL HOME
-      console.log('params: ', gifs);
     }
   }, [params, navigation]);
 

@@ -16,7 +16,6 @@ export const store = configureStore({
     gifs: gifsSlices.reducer,
     userSlice: userSlice.reducer,
 
-    //TODO: EXPLAIN 
     [gifsApi.reducerPath]: gifsApi.reducer,
     [trendingCategoriesApi.reducerPath]: trendingCategoriesApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
