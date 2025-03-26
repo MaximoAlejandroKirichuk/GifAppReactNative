@@ -8,6 +8,7 @@ export const globalStyles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, //si es android lo que hace es darle  un padding
   },
   title: {
+    fontFamily:'IndieFlower',
     fontSize: 28,
     fontWeight: "bold",
     marginVertical: 10,
@@ -37,6 +38,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 10,
   },
   subTitle: {
+
     textAlign: "center",  
     fontSize: 16,
     fontWeight: "bold",

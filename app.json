@@ -20,7 +20,8 @@
       "package": "com.anonymous.homepage"
     },
     "plugins": [
-      "expo-sqlite"
+      "expo-sqlite",
+      "expo-font"
     ]
   }
 }

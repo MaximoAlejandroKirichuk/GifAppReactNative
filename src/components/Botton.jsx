@@ -1,5 +1,6 @@
 import { StyleSheet, Text, Pressable } from 'react-native'
 import { Color } from '../global/Colors';
+import { globalStyles } from '../styles';
 
 export const BottonPressable = ({ label, onPress }) => {
     return (
@@ -10,7 +11,7 @@ export const BottonPressable = ({ label, onPress }) => {
                   })}
             onPress={onPress}
         >
-            <Text numberOfLines={1} adjustsFontSizeToFit style={styles.text}>{label}</Text>
+            <Text numberOfLines={1} adjustsFontSizeToFit style={globalStyles.subTitle}>{label}</Text>
 
         </Pressable>
     )
@@ -30,8 +31,5 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  text: {
-    color: Color.gray,
-    fontSize: 18,
-  },
+
 });

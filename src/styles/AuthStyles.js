@@ -22,14 +22,17 @@ export const AuthStyles = StyleSheet.create({
         elevation: 5,
       },
       title: {
-        fontSize: 24,
+        fontFamily: 'IndieFlower',
+        fontSize: 45,
         fontWeight: 'bold',
         textAlign: 'center',
-        marginBottom: 20,
+        marginBottom: 10,
       },
       sub: {
+        fontFamily: 'CaveatBrush',
+        fontSize: 20,
         textAlign: 'center',
-        marginTop: 10,
+        marginTop: 5,
       },
       subLink: {
         textAlign: 'center',
