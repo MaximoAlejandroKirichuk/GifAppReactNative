@@ -22,9 +22,8 @@ export const AuthStyles = StyleSheet.create({
         elevation: 5,
       },
       title: {
-        fontFamily: 'IndieFlower',
+        fontFamily: 'PatrickHand',
         fontSize: 45,
-        fontWeight: 'bold',
         textAlign: 'center',
         marginBottom: 10,
       },

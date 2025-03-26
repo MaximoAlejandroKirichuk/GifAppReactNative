@@ -8,10 +8,9 @@ export const globalStyles = StyleSheet.create({
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0, //si es android lo que hace es darle  un padding
   },
   title: {
-    fontFamily:'IndieFlower',
-    fontSize: 28,
-    fontWeight: "bold",
-    marginVertical: 10,
+    fontFamily:'PatrickHand',
+    fontSize: 32,
+    marginVertical: 6,
   },
   tabBar: {
     backgroundColor: "pink",

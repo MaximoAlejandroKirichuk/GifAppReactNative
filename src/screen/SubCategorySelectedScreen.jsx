@@ -22,8 +22,7 @@ export const SubCategorySelectedScreen = () => {
       navigation.setOptions({
         title: category,
       });
-      //TODO: ACA HAGO LA PETICION PARA LLEVAR A SUBCATEGORY SELECTED SCREEN
-      
+     
     }
   }, [category, navigation]);
 

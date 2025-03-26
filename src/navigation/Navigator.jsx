@@ -10,19 +10,16 @@ import { useFonts } from 'expo-font';
 
 export const Navigator = () => {
 
-    //todo: tipografias 
-    // const [fontsLoaded, fontError] = useFonts({
-    //     Josefin: require("./assets/JosefinSans-Regular.ttf"),
-    //   });
-    
     const [fontsLoaded, fontError] = useFonts({
         IndieFlower: require('../../assets/fonts/Indie_Flower/IndieFlower-Regular.ttf'),
+        PatrickHand: require('../../assets/fonts/Patrick_Hand/PatrickHand-Regular.ttf'),
         CaveatBrush: require('../../assets/fonts/Caveat_Brush/CaveatBrush-Regular.ttf'),
       });
 
     const disptach = useDispatch()
     const { user } = useSelector(state => state.userSlice.value)
     const { getSession } = useDataBase();
+
     useEffect(() => {
         (async () => {
             try {
@@ -39,7 +36,7 @@ export const Navigator = () => {
                 Alert.alert('An error occurred while trying to log in.')
             }
         })()
-    }, [user])
+    }, [])
 
     if (!fontsLoaded || fontError) {
         return null;

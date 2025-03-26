@@ -47,9 +47,8 @@ export const searchStyles = StyleSheet.create({
         gap: 56,
     },
     title: {
-      fontFamily: 'IndieFlower',
-        fontSize: 25,
-        fontWeight: "bold",
+      fontFamily: 'PatrickHand',
+        fontSize: 30,
         marginVertical: 8,
     },
 

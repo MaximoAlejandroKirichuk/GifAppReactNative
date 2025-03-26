@@ -7,10 +7,9 @@ import { useGetTrendingCategoriesQuery } from '../store/apis/trendingCategoriesA
 export const Home = () => {
 
 
-  //TODO: GUARDAR EN CACHE LA PETICION Y USAR UN REDUCE ASINCRONO
   
-  const { data, error, isLoading } = useGetTrendingCategoriesQuery()
-  console.log('dataaaa: ',data);
+  const { data, error } = useGetTrendingCategoriesQuery()
+
   return (
     <SafeAreaView style={globalStyles.container}>
       
@@ -19,11 +18,10 @@ export const Home = () => {
         !error
           ? (
             <GridGifs gifs={data} >
-              {console.log(data)}
               <Text style={globalStyles.title}>Trending Topics of Gif</Text>
             </GridGifs>
           )
-          : null
+          : <Text>We are having problems with our gif provider 😞</Text>
       }
     </SafeAreaView>
   )

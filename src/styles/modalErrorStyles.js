@@ -23,12 +23,11 @@ export const modalErrorStyles = StyleSheet.create({
         },
         titleModal: {
             textAlign: 'center',
-            fontWeight: "bold",
-            fontSize: 32,
-            fontStyle: "italic",
-            marginVertical: 8
+            fontSize: 42,
+            fontFamily: 'PatrickHand',
+            marginVertical: 6
         },
         textModal:{
-            fontSize: 24
+            fontSize: 24,
         }
 })

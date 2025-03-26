@@ -20,7 +20,6 @@ export const homeStyles = StyleSheet.create({
 
   },
   textContainer: {
-
     bottom: '50%', // Ajusta la posición del texto en la imagen
     left: 0,
     right: 0,
