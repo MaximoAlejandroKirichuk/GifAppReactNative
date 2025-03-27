@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import {baseURL} from './data/realTimeDataBase'
-
+//ESTO SE CONECTA CON FIREBASE, pide las trendingCategories.
 export const trendingCategoriesApi = createApi({
   reducerPath: 'trendingCategoriesApi',
   baseQuery: fetchBaseQuery({
@@ -13,4 +13,4 @@ export const trendingCategoriesApi = createApi({
   }),
 })
 
-export const { useGetTrendingCategoriesQuery } = trendingCategoriesApi
+export const { useGetTrendingCategoriesQuery } = trendingCategoriesApi;

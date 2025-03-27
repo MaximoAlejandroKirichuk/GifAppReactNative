@@ -3,7 +3,7 @@ import { homeStyles } from "../styles"
 import * as Haptics from 'expo-haptics';
 import { useNavigation } from "@react-navigation/native";
 
-// esto se usa en el home: y no envia la lista de gif
+// esto se usa en el home, envia la lista de subcategories a subCategoryScreen
 
 export const ItemGifHome = ({ imgKey, url, title, subCategories}) => {
     const navigation = useNavigation();

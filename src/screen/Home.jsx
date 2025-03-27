@@ -7,13 +7,11 @@ import { useGetTrendingCategoriesQuery } from '../store/apis/trendingCategoriesA
 export const Home = () => {
 
 
-  
+  //pido a mi store (es una peticion a firebase) 
   const { data, error } = useGetTrendingCategoriesQuery()
 
   return (
     <SafeAreaView style={globalStyles.container}>
-      
- 
       {
         !error
           ? (

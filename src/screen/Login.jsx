@@ -28,7 +28,6 @@ const Login = ({ navigation }) => {
       if (result.error.data.error.errors[0].message === 'INVALID_LOGIN_CREDENTIALS') {
         handleModal(true);  // Cambiar el estado para que el modal se muestre
       }
-      console.log("Login failed: ", result.error.data.error.errors[0].message); // Verificar si hay error
     }
 
     if (result?.data && result.isSuccess) {
@@ -45,7 +44,7 @@ const Login = ({ navigation }) => {
             localId: result.data.localId,
           }));
         } catch (error) {
-          console.log(error)
+          Alert.alert('An error occurred while trying to log in.')
         }
 
       })()
@@ -59,21 +58,21 @@ const Login = ({ navigation }) => {
   }
 
   const onSubmit = () => {
+    //desestructuro los inputs
     const { email, password } = initialValue;
-    console.log("Form: ", initialValue); // Verificar si se dispara
 
     // Validación básica:
     // 1. Verificar que los campos no estén vacíos
     if (!email || !password) {
       handleModal(true);
-      return; // Si hay un campo vacío, no enviamos la solicitud
+      return; // Si hay un campo vacío, no envio la solicitud
     }
 
     // 2. Verificar que el correo electrónico tenga el formato correcto
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
       handleModal(true);
-      return; // Si el correo no es válido, no enviamos la solicitud
+      return; // Si el correo no es válido, no envio la solicitud
     }
 
     // Trigger sign-up API request

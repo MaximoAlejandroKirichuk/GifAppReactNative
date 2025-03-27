@@ -11,6 +11,7 @@ import { globalStyles } from '../styles';
 
 
 export const SubCategorySelectedScreen = () => {
+  //recibo las categorias de SubCategoryScreen.
   const params = useRoute().params;
   const { category } = params
   const navigation = useNavigation();
@@ -22,7 +23,6 @@ export const SubCategorySelectedScreen = () => {
       navigation.setOptions({
         title: category,
       });
-     
     }
   }, [category, navigation]);
 

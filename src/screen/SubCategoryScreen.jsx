@@ -5,6 +5,7 @@ import { globalStyles } from '../styles';
 import { BottonPressable } from '../components/Botton';
 
 export const SubCategoryScreen = () => {
+    //viene desde ItemGifHome
     const params = useRoute().params;
     const { name, subCategories } = params
     const navigation = useNavigation();
@@ -14,8 +15,7 @@ export const SubCategoryScreen = () => {
       navigation.setOptions({
         title: name,
       });
-      
-      console.log(subCategories);
+    
     }
   }, [params, navigation]);
 
@@ -31,16 +31,12 @@ export const SubCategoryScreen = () => {
                data={subCategories}
                keyExtractor={(item) => item.id}
                renderItem={({ item }) => (
-                 <View>
                    <BottonPressable
                      label={item.name}
                      onPress={() => navigation.navigate('SubCategorySelectedScreen', { category: item.name })}
                    />
-                     
-                   
-                 </View>
                )}
-             /> : null
+             /> : <Text>We are having problems with our gif provider 😞</Text>
       }
     </View>
   )

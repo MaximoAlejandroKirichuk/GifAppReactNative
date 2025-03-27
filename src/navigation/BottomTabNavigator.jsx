@@ -38,6 +38,24 @@ export const BottomTabNavigator = () => {
                 }}
             />
             
+
+            <Tab.Screen
+                name='Search'
+                component={Search}
+                options={{
+                    tabBarIcon: ({ focused }) => (
+                        <View>
+                            <AntDesign
+                                name="search1"
+                                size={24}
+                                color={focused ? Color.buttons : Color.gray}
+                            />
+                        </View>
+                    )
+                }}
+            />
+
+
             <Tab.Screen
                 name='SaveFavoritesCategoryStack'
                 component={SaveFavoritesCategoryStack}
@@ -58,21 +76,7 @@ export const BottomTabNavigator = () => {
 
 
 
-            <Tab.Screen
-                name='Search'
-                component={Search}
-                options={{
-                    tabBarIcon: ({ focused }) => (
-                        <View>
-                            <AntDesign
-                                name="search1"
-                                size={24}
-                                color={focused ? Color.buttons : Color.gray}
-                            />
-                        </View>
-                    )
-                }}
-            />
+            
 
             <Tab.Screen
                 name='My Profile'

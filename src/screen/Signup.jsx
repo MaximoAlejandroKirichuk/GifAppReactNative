@@ -49,7 +49,6 @@ const Signup = ({ navigation }) => {
     // Validación básica:
     // 1. Verificar que los campos no estén vacíos
     if (!email || !password) {
-      console.log("Both email and password are required.");
       handleModal(true)
       return; // Si hay un campo vacío, no enviamos la solicitud
     }
@@ -101,7 +100,7 @@ const Signup = ({ navigation }) => {
         {modalVisible  &&  (
           <ModalError handleModal={handleModal} modalVisible={modalVisible}>
             <Text style={modalErrorStyles.titleModal}>Sign Up Error</Text>
-            <Text style={modalErrorStyles.textModal}>{result?.error?.data?.error?.message || "Please check your data and try again."}</Text>
+            <Text style={modalErrorStyles.textModal}>{"Please check your data and try again."}</Text>
           </ModalError>
         )}
 
