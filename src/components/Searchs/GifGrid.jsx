@@ -47,6 +47,8 @@ export const GifGrid = ({ category, cant }) => {
               title={item.title}
             />
           )}
+          ListEmptyComponent={<Text style={{ textAlign: 'center', margin: 20 }}>No GIFs available 😕</Text>}
+
         />
       )}
     </View>

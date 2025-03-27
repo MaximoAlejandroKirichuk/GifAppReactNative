@@ -1,4 +1,4 @@
-import { FlatList} from 'react-native'
+import { FlatList, Text} from 'react-native'
 import { GifGrid } from './GifGrid';
 
 
@@ -8,6 +8,7 @@ export const Gifs = ({ categoriesId  }) => {
       data={categoriesId}
       keyExtractor={(item) => item}
       renderItem={({ item }) => <GifGrid category={item.name} cant= {20} />}
+      
     />
   );
 

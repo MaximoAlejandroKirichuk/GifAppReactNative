@@ -1,44 +1,61 @@
-import { Text, View, FlatList, Image, Pressable } from 'react-native'
-
-import { useSelector } from 'react-redux'
-import { useNavigation } from '@react-navigation/native'
-
-import { globalStyles } from '../styles'
-import { BottonPressable } from '../components/Botton'
-
+import { Text, View, ActivityIndicator, FlatList } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { globalStyles } from '../styles';
+import { BottonPressable } from '../components/Botton';
+import { useGetFavoriteCategoriesQuery, usePostFavoriteCategoriesMutation } from '../services/userService';
+import { useEffect } from 'react';
+import { useCategories } from '../hooks/useCategories';
 
 export const SaveFavoritesCategory = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   const { favoritesGifs = [] } = useSelector(state => state.gifs);
-  const { favoriteCategory } = useSelector(state => state.categories);
   const flatFavoriteGifs = favoritesGifs.flat();  // Esto elimina ese array anidado
 
+  const { categoriesGif, isLoading, isError } = useCategories()
+  
+  if (isLoading) {
+    return (
+      <View style={globalStyles.container}>
+        <ActivityIndicator size="large" />
+        <Text style={globalStyles.text}>Loading your favorite categories...</Text>
+      </View>
+    );
+  }
+  
+  if (isError) {
+    return (
+      <View style={globalStyles.container}>
+        <Text style={globalStyles.text}>Error loading categories. Please try again later.</Text>
+      </View>
+    );
+  }
+  
+ 
   return (
     <View style={globalStyles.container}>
-      {/* //TODO: CREAR LA LISTA DE CATEGORIAS GUARDADA Y AGREGARLO A SQL LITE, LA CATEGORIA y algo si no hay nada */}
-
-
       <Text style={globalStyles.title}>Quickly access what you like⚡️</Text>
-
-
+   
       {
-       favoriteCategory.length !== 0 
+       (categoriesGif )
        ?
+      <View style={{width: "100%"}}>
 
-       <FlatList
-         data={favoriteCategory}
+       <FlatList  
+         data={categoriesGif?.categories} 
          keyExtractor={(item) => item.name}
+         numColumns={1}
          renderItem={({ item }) => (
-           <View>
+           <View style={{ alignItems: 'center' }}>
              <BottonPressable
                label={item.name}
+               //TODO: GIFS NO ACA
                onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
-             />
-               
-             
-           </View>
+               />
+               </View>
          )}
-       />
+         />
+        </View>
 
        :  
        <>
@@ -51,5 +68,5 @@ export const SaveFavoritesCategory = () => {
       }
 
     </View>
-  )
-}
+  );
+};

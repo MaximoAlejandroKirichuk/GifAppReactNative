@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { ItemGif } from '../components/Searchs/ItemGif';
 
 export const CategorySelected = () => {
-  // RECIBO CATEGORIA Y MUESTRO GIFS
+  // RECIBO CATEGORIA Y MUESTRO GIFS en EL STACK SAVE FAVORITE CATEGORY
   const params = useRoute().params;
   const { name, gifs } = params
   const navigation = useNavigation();

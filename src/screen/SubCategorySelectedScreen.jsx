@@ -9,7 +9,7 @@ import { Color } from '../global/Colors';
 import { ItemGif } from '../components/Searchs/ItemGif';
 import { globalStyles } from '../styles';
 
-
+//TODO: AGREGAR UN LOADING CON ERROR
 export const SubCategorySelectedScreen = () => {
   //recibo las categorias de SubCategoryScreen.
   const params = useRoute().params;
