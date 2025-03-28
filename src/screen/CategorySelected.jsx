@@ -1,38 +1,49 @@
-import { View, Text, FlatList, Image, Pressable, Linking } from 'react-native'
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 import { globalStyles } from '../styles';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { useEffect } from 'react';
 import { ItemGif } from '../components/Searchs/ItemGif';
+import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
+import { Color } from '../global/Colors';
 
 export const CategorySelected = () => {
-  // RECIBO CATEGORIA Y MUESTRO GIFS en EL STACK SAVE FAVORITE CATEGORY
-  const params = useRoute().params;
-  const { name, gifs } = params
+  const { params } = useRoute();
+  const { name } = params;
   const navigation = useNavigation();
 
-  useEffect(() => {
-    if (params?.name) {
-      navigation.setOptions({
-        title: name,
-      });
-    }
-  }, [params, navigation]);
+  const { data: gifs, isError, isLoading, isFetching } = useGetGifsByCategoryQuery({ category: name, cant: 20 });
 
+  useEffect(() => {
+    navigation.setOptions({ title: name });
+  }, [name, navigation]);
+
+  if (isFetching || isLoading) {
+    return (
+      <View style={{ flex: 1, height: 500, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color={Color.buttons} />
+      </View>
+    );
+  }
+
+  if (isError) {
+    return (
+      <View style={globalStyles.container}>
+        <Text style={globalStyles.text}>Error loading categories. Please try again later.</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={globalStyles.container}>
-      <View style={globalStyles.title}>
-        <Text style={globalStyles.title}>Press to share 💬</Text>
-      </View>
+      <Text style={globalStyles.title}>Press to share 💬</Text>
       <FlatList
-        data={gifs}
+        data={gifs ?? []}
         keyExtractor={(item) => item.id}
         numColumns={2}
         renderItem={({ item }) => (
-          <ItemGif title={item.title} url={item.url} gifKey={item.id}/>
+          <ItemGif title={item.title} url={item.url} gifKey={item.id} />
         )}
       />
     </View>
-
   );
-}
+};

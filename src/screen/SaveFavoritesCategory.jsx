@@ -1,16 +1,16 @@
 import { Text, View, ActivityIndicator, FlatList } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+
 import { useNavigation } from '@react-navigation/native';
 import { globalStyles } from '../styles';
 import { BottonPressable } from '../components/Botton';
-import { useGetFavoriteCategoriesQuery, usePostFavoriteCategoriesMutation } from '../services/userService';
-import { useEffect } from 'react';
+
 import { useCategories } from '../hooks/useCategories';
 
 export const SaveFavoritesCategory = () => {
   const navigation = useNavigation();
-  const { favoritesGifs = [] } = useSelector(state => state.gifs);
-  const flatFavoriteGifs = favoritesGifs.flat();  // Esto elimina ese array anidado
+  
+
+
 
   const { categoriesGif, isLoading, isError } = useCategories()
   
@@ -39,7 +39,7 @@ export const SaveFavoritesCategory = () => {
       {
        (categoriesGif )
        ?
-      <View style={{width: "100%"}}>
+      <View style={{width: "90%", flex:1,}}>
 
        <FlatList  
          data={categoriesGif?.categories} 
@@ -50,7 +50,7 @@ export const SaveFavoritesCategory = () => {
              <BottonPressable
                label={item.name}
                //TODO: GIFS NO ACA
-               onPress={() => navigation.navigate('CategorySelected', { name: item.name, gifs: flatFavoriteGifs })}
+               onPress={() => navigation.navigate('CategorySelected', { name: item.name })}
                />
                </View>
          )}
