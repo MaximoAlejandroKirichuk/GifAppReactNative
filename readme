@@ -1,21 +1,58 @@
 # GifApp 
+
 ## Descripción
-🔎 Una aplicación rápida y sencilla para buscar y compartir GIFs animados en segundos.
+GifApp es una aplicación diseñada para permitir a los usuarios buscar, explorar y compartir GIFs animados de manera rápida y sencilla. Con una interfaz intuitiva y funcionalidades prácticas, los usuarios pueden guardar sus categorias de GIFs favoritos y compartirlos en plataformas de mensajería.
+Borrar todas las sesiones (Cerrar sesión)
+
+## 🚀 Características principales
+
+🔑 Login y Signup con persistencia en SQLite
+La aplicación cuenta con un sistema de autenticación que permite a los usuarios registrarse e iniciar sesión. Los datos se almacenan en una base de datos local utilizando SQLite, lo que permite un acceso rápido y eficiente a la app.
+
+📸 Cambio de foto de perfil desde galería o cámara
+Cada usuario recibe una foto de perfil predeterminada, pero puede cambiarla seleccionando una imagen desde la galería o capturando una nueva con la cámara del dispositivo.
+
+🔍 Buscar, guardar y compartir tus categorías favoritas
+A través de un campo de búsqueda, los usuarios pueden encontrar categorías de GIFs utilizando la API de Giphy (https://developers.giphy.com).
+Es posible guardar categorías en favoritos para acceder a ellas fácilmente.
+Al presionar un GIF, este se descarga en la caché del dispositivo y se verifica si el sistema permite compartir archivos. Si es compatible, se abre el menú de compartir del dispositivo. En caso de error, se muestra una alerta.
+
+🔓 Cerrar sesión (Log out)
+El cierre de sesión elimina por completo la tabla de usuario en la base de datos local. Dado que la información clave se almacena en Firebase, los usuarios pueden volver a iniciar sesión sin perder datos importantes.
+
 
 ## Instalación 
-1) Clonar el repositorio
+1) git clone 
 2) Hacer un npm install
 3) Hacer un npm run start 
 
 ## Uso 
 1️⃣ Ingresa una palabra clave en la barra de búsqueda.
-2️⃣ Explora los resultados y elige tu GIF favorito.
-3️⃣ Haz clic para compartirlo.
-4️⃣ Tambien puedes guardar tus categorias favoritas para verlo mas tarde
+2️⃣ Explora los resultados y selecciona tu GIF favorito.
+3️⃣ Haz clic en el GIF para compartirlo en otra aplicacion como WhatsApp.
+4️⃣ Guarda tus GIFs favoritos en categorías personalizadas para acceder a ellos más tarde.
 
 ## 🔗 Tecnologías Usadas
-React Native 
-Redux para el manejo del estado
-API de Giphy para obtener los GIFs
-Firebase para la autenticacion y almacenamiento de datos
+🔗 Tecnologías Usadas
+React Native: Framework principal para el desarrollo de la app.
+
+Redux Toolkit: Manejo eficiente del estado global.
+
+API de Giphy: Obtención y gestión de GIFs en la aplicación.
+
+Firebase: Autenticación de usuarios y almacenamiento de datos en la nube.
+
+React Navigation: Implementación de navegación con Bottom Tabs como base y múltiples Stacks para compartir datos entre pantallas.
+
+expo-haptics: Generación de vibraciones para mejorar la interacción del usuario.
+
+expo-sqlite: Base de datos local para la persistencia de información.
+
+expo-sharing: Permite compartir GIFs con otras aplicaciones como WhatsApp o Telegram.
+
+expo-image-picker: Permite abrir la cámara o la galería para seleccionar o capturar imágenes/videos.
+
+expo-file-system: Gestión de archivos en el sistema, incluyendo la descarga y almacenamiento en caché de GIFs.
+
+expo-media-library: Acceso, almacenamiento y gestión de fotos y videos en la galería del dispositivo.
 
