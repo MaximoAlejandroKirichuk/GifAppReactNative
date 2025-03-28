@@ -1,4 +1,21 @@
-Para poner a andar la app.
+# GifApp 
+## Descripción
+🔎 Una aplicación rápida y sencilla para buscar y compartir GIFs animados en segundos.
+
+## Instalación 
 1) Clonar el repositorio
-2) Hacer un npm i
-3) Hacer un npm start
+2) Hacer un npm install
+3) Hacer un npm run start 
+
+## Uso 
+1️⃣ Ingresa una palabra clave en la barra de búsqueda.
+2️⃣ Explora los resultados y elige tu GIF favorito.
+3️⃣ Haz clic para compartirlo.
+4️⃣ Tambien puedes guardar tus categorias favoritas para verlo mas tarde
+
+## 🔗 Tecnologías Usadas
+React Native 
+Redux para el manejo del estado
+API de Giphy para obtener los GIFs
+Firebase para la autenticacion y almacenamiento de datos
+
