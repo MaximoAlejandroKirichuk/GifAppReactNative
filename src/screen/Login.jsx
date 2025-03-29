@@ -44,7 +44,7 @@ const Login = ({ navigation }) => {
             localId: result.data.localId,
           }));
         } catch (error) {
-          Alert.alert('An error occurred while trying to log in.')
+          
         }
 
       })()
