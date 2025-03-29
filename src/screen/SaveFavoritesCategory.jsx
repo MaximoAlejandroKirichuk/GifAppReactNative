@@ -49,7 +49,6 @@ export const SaveFavoritesCategory = () => {
            <View style={{ alignItems: 'center' }}>
              <BottonPressable
                label={item.name}
-               //TODO: GIFS NO ACA
                onPress={() => navigation.navigate('CategorySelected', { name: item.name })}
                />
                </View>

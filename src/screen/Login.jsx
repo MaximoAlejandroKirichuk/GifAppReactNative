@@ -9,8 +9,8 @@ import { useSignInMutation } from '../services/authService'
 import { useDispatch } from 'react-redux'
 import { useInput } from '../hooks'
 import { ModalError } from '../components'
-import { modalErrorStyles } from '../styles'
 import { useDataBase } from '../hooks/useDataBase'
+import { modalErrorStyles } from '../styles'
 
 const Login = ({ navigation }) => {
   const [initialValue, setInitialValue] = useState({
@@ -21,6 +21,7 @@ const Login = ({ navigation }) => {
   const dispatch = useDispatch();
   const [triggerSignUp, result] = useSignInMutation();
   const { insertSession } = useDataBase()
+
   useEffect(() => {
     // Cuando la respuesta de la API cambia, manejamos los casos de éxito y error
     if (result.isError) {
@@ -33,7 +34,7 @@ const Login = ({ navigation }) => {
     if (result?.data && result.isSuccess) {
       (async () => {
         try {
-          const response = await insertSession({
+          await insertSession({
             email: result.data.email,
             localId: result.data.localId,
             token: result.data.idToken
@@ -44,7 +45,7 @@ const Login = ({ navigation }) => {
             localId: result.data.localId,
           }));
         } catch (error) {
-          
+          alert('hubo un problema')
         }
 
       })()

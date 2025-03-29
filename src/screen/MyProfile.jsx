@@ -45,8 +45,6 @@ export const MyProfile = () => {
   return (
     <View style={globalStyles.container}>
        
-       {/* //TODO: HACER MOSTRAR LOS DATOS DE LA CUENTA  */}
-       {/* //TODO: Y CUANTOS GIFS TIENE LIKEADOS Y DE DONDE ESTA } */}
        
       {
         imageFromBase || imageCamera 

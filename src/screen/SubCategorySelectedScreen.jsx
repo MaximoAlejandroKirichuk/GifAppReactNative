@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { View, Text, ActivityIndicator, FlatList } from 'react-native'
 import { useNavigation, useRoute } from '@react-navigation/native';
+
 import { useDispatch } from 'react-redux';
 import { useGetGifsByCategoryQuery } from '../store/apis/gifsApi';
 import { setGifs } from '../store/slices/gifs/gifsSlices';
-import { CategoryTitle } from '../components/CategoryTitle';
-import { Color } from '../global/Colors';
+
 import { ItemGif } from '../components/Searchs/ItemGif';
+import { Color } from '../global/Colors';
 import { globalStyles } from '../styles';
 
-//TODO: AGREGAR UN LOADING CON ERROR
 export const SubCategorySelectedScreen = () => {
   //recibo las categorias de SubCategoryScreen.
   const params = useRoute().params;
