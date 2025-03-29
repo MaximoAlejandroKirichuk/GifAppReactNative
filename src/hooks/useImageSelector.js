@@ -63,7 +63,7 @@ export const useImageSelector = () => {
           const img = `data:image/jpg;base64,${result.assets[0].base64}`;
           setImage(img);
           setImageUri(result.assets[0].uri);
-          setIsImageFromCamera(true);
+          
         }
       }
     } catch (error) {
@@ -86,7 +86,6 @@ export const useImageSelector = () => {
 
   const pickGalleryImage = async () => {
     try {
-      setIsImageFromCamera(false);
       const permissionGallery = await verifyGalleryPermission();
 
       if (permissionGallery) {
@@ -98,10 +97,16 @@ export const useImageSelector = () => {
           quality: 0.2,
         });
 
-        if (result.canceled || !result.assets || result.assets.length === 0) {
-          Alert.alert("Selection Cancelled", "No image was selected.");
-          return;
-        }
+          // Verificar si el resultado tiene imágenes seleccionadas
+      if (result.canceled || !result.assets || result.assets.length === 0) {
+        Alert.alert("Selection Cancelled", "No image was selected.");
+        return;
+      }
+
+      // Si una imagen fue seleccionada, procesarla
+      const selectedImage = `data:image/jpeg;base64,${result.assets[0].base64}`;
+      setImage(selectedImage); // Asumí que tienes un estado `image` para guardar la imagen seleccionada
+    
       }
     } catch (err) {
       Alert.alert("Error", "An error occurred while selecting the image.");
