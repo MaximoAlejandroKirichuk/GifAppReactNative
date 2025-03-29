@@ -18,7 +18,7 @@ export const ImageSelector = () => {
 
 
   // Handle confirm image when no image is selected
-  const handleConfirmImage = () => {
+  const handleConfirmImage = async () => {
     if (!image && !imageFromBase) {
       Alert.alert(
         'No Photo Selected',
@@ -26,7 +26,7 @@ export const ImageSelector = () => {
       );
       return;
     }
-    confirmImage();
+    await confirmImage();
   };
 
   return (
