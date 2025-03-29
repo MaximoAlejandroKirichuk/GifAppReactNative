@@ -16,7 +16,12 @@ export const BottomTabNavigator = () => {
         <Tab.Navigator
             screenOptions={{
                 tabBarStyle: globalStyles.tabBar,
-                tabBarShowLabel: false //delete label
+                tabBarShowLabel: false, //delete label
+              
+                  headerTitleStyle: {
+                    fontFamily: 'IndieFlower',
+                    fontSize: 30
+                  },
             }}
             initialRouteName='HOME'
         >
@@ -42,7 +47,7 @@ export const BottomTabNavigator = () => {
             <Tab.Screen
                 name='Search'
                 component={Search}
-                options={{
+                options={{   
                     tabBarIcon: ({ focused }) => (
                         <View>
                             <AntDesign
@@ -61,6 +66,7 @@ export const BottomTabNavigator = () => {
                 component={SaveFavoritesCategoryStack}
 
                 options={{
+                    
                     tabBarIcon: ({ focused }) => (
                         <View>
                             <AntDesign

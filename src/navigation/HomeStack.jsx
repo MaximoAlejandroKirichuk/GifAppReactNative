@@ -9,7 +9,16 @@ const Stack = createNativeStackNavigator();
 export const HomeStack = () => {
     return (
         <Stack.Navigator
-            screenOptions={{ headerShown:true }} //evita la anidacion de cabeceras
+            screenOptions={
+                
+                
+                { 
+                headerShown:true, headerTitleStyle: {
+                    fontFamily: 'IndieFlower',
+                    fontSize: 30
+                  }, }
+            } //evita la anidacion de cabeceras
+            
         >
 
             <Stack.Screen
