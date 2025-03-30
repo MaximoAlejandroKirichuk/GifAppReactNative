@@ -23,35 +23,34 @@ const Login = ({ navigation }) => {
   const { insertSession } = useDataBase()
 
   useEffect(() => {
-    // Cuando la respuesta de la API cambia, manejamos los casos de éxito y error
+    // Verifica si el resultado tiene un error
     if (result.isError) {
-      // Mostrar modal de error solo si el código de error es el esperado
-      if (result.error.data.error.errors[0].message === 'INVALID_LOGIN_CREDENTIALS') {
-        handleModal(true);  // Cambiar el estado para que el modal se muestre
+      // Verifica la estructura antes de acceder a los valores
+      if (result.error?.data?.error?.errors?.[0]?.message === 'INVALID_LOGIN_CREDENTIALS') {
+        handleModal(true); // Mostrar modal de error
       }
     }
 
     if (result?.data && result.isSuccess) {
+      // Lógica para insertar sesión y actualizar el estado
       (async () => {
         try {
           await insertSession({
             email: result.data.email,
             localId: result.data.localId,
-            token: result.data.idToken
-          })
+            token: result.data.idToken,
+          });
           dispatch(setUser({
             email: result.data.email,
             token: result.data.idToken,
             localId: result.data.localId,
           }));
         } catch (error) {
-          alert('hubo un problema')
+          alert('The session could not be saved.');
         }
-
-      })()
-      
+      })();
     }
-  }, [result]);
+  }, [result, insertSession, dispatch]);
 
 
   const handleChange = (field, value) => {
