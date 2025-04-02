@@ -37,9 +37,9 @@ export const MyProfile = () => {
     }catch(err){
       Alert.alert(
         'Sign Out Error',
-        );
+        'Please try again later'  
+      );
     }
-    clearUser();
   }
 
   return (
